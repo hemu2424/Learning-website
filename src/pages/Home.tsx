@@ -1,14 +1,20 @@
 
-import React from 'react'
-import Footer from '../components/layout/Footer/Footer'
-import Community from '../components/sections/Community/Community'
 
 const MovingText = () => {
   return (
+    <div className="absolute top-10 left-0 w-full overflow-hidden whitespace-nowrap z-0 opacity-10">
+      <div className="flex animate-marquee text-6xl font-bold text-yellow-300">
+        <span className="mx-4">
+          SHARE GROW LEARN BUILD SHARE GROW LEARN BUILD
+        </span>
+        <span className="mx-4">
+          SHARE GROW LEARN BUILD SHARE GROW LEARN BUILD
+        </span>
+        <span className="mx-4">
+          SHARE GROW LEARN BUILD SHARE GROW LEARN BUILD
+        </span>
+      </div>
 
-    <div>
-      <Community/>
-      <Footer/>
     </div>
   );
 };
