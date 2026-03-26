@@ -29,6 +29,8 @@ const AppRoutes = () => {
         <Route path="/community" element={<Community />} />
         <Route path="/student-ambrastor" element={<Studentambassador/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
+        
+        
 
 
 
