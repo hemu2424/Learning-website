@@ -4,15 +4,19 @@ export default {
   theme: {
     extend: {
       animation: {
-        marquee: "marquee 20s linear infinite",
+
+        // We set it to 60s for a smooth, slow crawl. 
+        // Lower numbers (like 20s) make it faster.
+        'scroll-text': 'scrollText 60s linear infinite',
       },
       keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(-100%)" },
+        scrollText: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },
   },
   plugins: [],
-};
+}
+
