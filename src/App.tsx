@@ -1,20 +1,8 @@
-import { useState } from 'react'
 
-import Programs from './components/Programs'
-import './App.css'
+import AppRoutes from './routes/AppRoutes'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-     
-    <div>
-      <Programs />
-    </div>
-  
-    </>
-  )
+  return <AppRoutes/>
 }
 
 export default App
