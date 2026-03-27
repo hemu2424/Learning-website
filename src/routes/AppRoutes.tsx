@@ -10,6 +10,7 @@ import Refer from "../pages/Refer";
 import Explore from "../pages/Explore";
 import Community from "../pages/Community";
 import Studentambassador from "../pages/Studentambassador";
+import BlogDetail from "../pages/BlogDetail";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/:slug" element={<BlogDetail />} />
         </Route>
 
 
