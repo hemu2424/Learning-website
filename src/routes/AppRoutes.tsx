@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
+import Programs from "../components/Programs"
 import MainLayout from "../layout/MainLayout";
 import Blogs from "../pages/Blogs";
 import Dashboard from "../pages/Dashboard";
@@ -26,6 +27,7 @@ const AppRoutes = () => {
 
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+         <Route path="/programs" element={<Programs />} />
         <Route path="/refer" element={<Refer />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/community" element={<Community />} />
