@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       animation: {
+
         // We set it to 60s for a smooth, slow crawl. 
         // Lower numbers (like 20s) make it faster.
         'scroll-text': 'scrollText 60s linear infinite',
