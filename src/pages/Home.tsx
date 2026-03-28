@@ -20,6 +20,7 @@ const programs = [
   { title: "JavaScript Bootcamp", image: promptImg, enrolled: "20.3k", date: "23 MAR 26" },
 ];
 
+
 type MarqueeTextProps = {
   text: string;
   repeat?: number;
@@ -62,6 +63,147 @@ const MarqueeText = ({
     </div>
   );
 };
+type ImageItem = {
+  src: string;
+  name: string;
+};
+
+type ImageMarqueeProps = {
+  items: ImageItem[];
+  speed?: number;
+  reverse?: boolean; // 👈 NEW
+  gap?: string;
+};
+
+const ImageMarquee = ({
+  items,
+  speed = 60,
+  reverse = false,
+  
+}: ImageMarqueeProps) => {
+  return (
+ <div className="overflow-hidden w-full relative">
+  <div
+  className="flex whitespace-nowrap animate-marquee gap-3"
+ style={{
+  animationDuration: `${speed}s`,
+  animationDirection: reverse ? "reverse" : "normal",
+}}
+>
+    {[...items, ...items].map((item, index) => (
+  <div className="flex flex-col items-center flex-shrink-0 w-[150px] px-2">
+  
+  <div className="h-12 flex items-center justify-center">
+    <img
+      src={item.src}
+      alt={item.name}
+      className="max-h-full max-w-full object-contain"
+    />
+  </div>
+
+  <p className="mt-2 text-xs text-center text-gray-700 truncate w-full">
+    {item.name}
+  </p>
+
+</div>
+    ))}
+  </div>
+</div>
+  );
+};
+const logos = [
+  
+  {
+    src: "https://lucdn.letsupgrade.net/assets/IIT_Dhanbad_e537609130.webp",
+    name: "Indian Institute of Technology (Indian School of Mines) Dhanbad (IIT ISM Dhanbad)",
+  },
+  {
+    src: "https://lucdn.letsupgrade.net/assets/VIT_74f0538042.webp",
+    name: "Vellore Institute of Technology (VIT), Vellore",
+  },
+  {
+    src:"https://lucdn.letsupgrade.net/assets/National_Institute_of_Technology_Silchar_8beb2efa6d.webp",
+    name:"National Institute of Technology, Silchar",
+  },
+  {
+    src:"https://lucdn.letsupgrade.net/assets/National_Institute_of_Technology_Srinagar_a631c2d4fa.webp",
+    name:"National Institute of Technology, Srinagar",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/National_Institute_of_Technology_AP_91c203c44e.webp",
+    name:"National Institute of Technology, Andhra Pradesh",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/NIT_Patna_0bf320193d.webp",
+    name:"National Institute of Technology, Patna",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Christ_University_e949fe8436.webp",
+    name:"Christ University, Bangalore",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Symbiosis_International_University_79771d5219.webp",
+    name:"Symbiosis International University",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/BVDU_603ffe1bad.webp",
+    name:"Bharati Vidyapeeth Deemed University, Pune",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Maharaja_Sayajirao_University_0e1bc21b5d.webp",
+    name:"Maharaja Sayajirao University of Baroda",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/KIIT_10b059704e.webp",
+    name:"Kalinga Institute of Industrial Technology (KIIT)",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Shiv_Nadar_University_f3542f324b.webp",
+    name:"Shiv Nadar University",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Cochin_University_b0239178d2.webp",
+    name:"Cochin University of Science and Technology",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/JNTU_842bae0069.webp",
+    name:"Jawaharlal Nehru Technological University, Hyderabad",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Amrita_Vishwa_Vidyapeetham_36653af85d.webp",
+    name:"Amrita Vishwa Vidyapeetham",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/chandigarh_3569dcecf7.webp",
+    name:"Chandigarh University, Mohali",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Guru_Gobind_Singh_Indraprastha_University_030fc086fb.webp",
+    name:"Guru Gobind Singh Indraprastha University (GGSIPU)",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/AMU_2dfee1bbdb.webp",
+    name:"Aligarh Muslim University",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Kerala_University_36dcefb675.webp",
+    name:"University of Kerala",
+  },
+  {
+    src:"https://lucdn.letsupgrade.net/assets/Maulana_Abul_Kalam_Azad_University_of_Technology_9494f59b09.webp",
+    name:"Maulana Abul Kalam Azad University of Technology, West Bengal",
+  },
+  {
+    src:"https://lucdn.letsupgrade.net/assets/IIT_Delhi_6e40bad38f.webp",
+    name:"Indraprastha Institute of Information Technology Delhi (IIIT Delhi)",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/PUNJAB_TECHNICAL_UNIVERSITY_8bcf890b9a.webp",
+    name:"Punjab Technical University",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/BVDU_603ffe1bad.webp",
+    name:"Bharati Vidyapeeth University Institute of Management, Kolhapur",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Guru_Nanak_Dev_University_3a7d405945.webp",
+    name:"Guru Nanak Dev University, Amritsar",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Kle_Technological_university_34c57788c1.webp",
+    name:"KLE Technological University",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/DY_Patil_abf332bece.webp",
+    name:"Dr. D. Y. Patil Vidyapeeth, Pune",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/Shivaji_University_Kolhapur_b95cdf25c0.webp",
+    name:"Shivaji University, Kolhapur",
+  },{
+    src:"https://lucdn.letsupgrade.net/assets/DIU_64029c05db.webp",
+    name:"University of Dhaka (International)",
+  }
+];
 const Home = () => {
 
 
@@ -166,7 +308,7 @@ const Home = () => {
 </div>
 
               <div className="relative bg-black text-white rounded-2xl p-4 h-60 flex justify-between items-start hover:scale-105 transition overflow-hidden">
-                <img src={card4} className="absolute inset-0 w-full h-[90] object-cover" />
+                <img src={card4} className="absolute inset-0 w-full h-full object-cover" />
                 <span className="z-10 text-xl">AI Core Skill</span>
                 <button className="z-10 border px-3 py-1 rounded-2xl text-xl">
                   Enrol Program
@@ -293,7 +435,7 @@ const Home = () => {
 
     {/* Centered H2 */}
     <h2
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-behindTheNineties text-xl md:text-4xl font-medium text-neutral-900 capitalize italic text-center"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-behindTheNineties text-xl md:text-3xl font-medium text-neutral-900 capitalize italic text-center"
       style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
     >
       Students from top colleges upskill with LetsUpgrade
@@ -307,6 +449,25 @@ const Home = () => {
   </p>
 
 </div>
+<div className="w-full">
+
+  {/* Full width breakout */}
+  <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden">
+
+    <div className="flex flex-col gap-6">
+
+      {/* Row 1 */}
+      <ImageMarquee items={logos} speed={30} />
+
+      {/* Row 2 reverse */}
+      <ImageMarquee items={logos} speed={40} reverse />
+
+    </div>
+
+  </div>
+
+</div>
+
 
 </div>
       
@@ -371,6 +532,57 @@ const Home = () => {
         Approximately 10,000 students enroll in LetsUpgrade programs every day
       </p>
     </div>
+  </div>
+</div>
+<div className="relative w-full overflow-hidden py-16 text-center">
+
+  {/* 🔥 BACKGROUND MARQUEE TEXT */}
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <MarqueeText
+      text="STUDY ABROAD"
+      repeat={10}
+      speed={200}
+      className="opacity-40"
+      itemClassName="text-[60px] sm:text-[100px] md:text-[140px] font-extrabold uppercase text-pink-200"
+      gap="mr-16"
+    />
+  </div>
+
+  {/* 🔥 FOREGROUND CONTENT */}
+  {/* 🔥 FULL WIDTH LINE SECTION */}
+<div className="relative z-10 w-full px-4 ">
+  <div className="flex items-center justify-center gap-2 max-w-6xl mx-auto">
+
+    {/* Left line */}
+    <div className="h-[2px] flex-1 bg-gradient-to-l from-pink-500 via-pink-400 to-transparent" />
+
+    {/* Text */}
+    <p className="px-3 text-xs sm:text-sm tracking-wide text-pink-600 uppercase font-semibold whitespace-nowrap text-center">
+      Looking to pursue your masters degree abroad?
+    </p>
+
+    {/* Right line */}
+    <div className="h-[2px] flex-1 bg-gradient-to-r from-pink-500 via-pink-400 to-transparent" />
+
+  </div>
+</div>
+
+{/* 🔥 MAIN CONTENT */}
+<div className="relative z-10 max-w-4xl mx-auto px-4 mt-4">
+
+    {/* Main Heading */}
+    <h2
+      className="text-2xl sm:text-3xl md:text-4xl font-semibold text-blue-900 italic"
+      style={{ fontFamily: "'Playfair Display', serif" }}
+    >
+      Study Abroad While Saving Significantly
+    </h2>
+
+    {/* Description */}
+    <p className="mt-3 text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
+     Join LetsUpgrade's MS Abroad Programs, allowing students to start their MS journey with select international universities in India and later continue abroad, saving significantly on costs
+    </p>
+
   </div>
 </div>
       
