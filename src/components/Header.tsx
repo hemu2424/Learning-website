@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full bg-white shadow-sm">
+     <header className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur-md shadow-sm">
        <div className="w-full flex items-center px-4 sm:px-6 lg:px-16 py-3">
 
   {/* Left (Desktop only) */}
