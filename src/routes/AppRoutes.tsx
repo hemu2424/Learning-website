@@ -12,6 +12,7 @@ import Explore from "../pages/Explore";
 import Community from "../pages/Community";
 import Studentambassador from "../pages/Studentambassador";
 import BlogDetail from "../pages/BlogDetail";
+import CoinPage from "../pages/CoinsPage";
 
 const AppRoutes = () => {
   return (
@@ -33,6 +34,7 @@ const AppRoutes = () => {
         <Route path="/community" element={<Community />} />
         <Route path="/student-ambrastor" element={<Studentambassador/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/coins" element={<CoinPage/>}/>
         
         
 

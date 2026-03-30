@@ -1,21 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
- theme: {
-  extend: {keyframes: {
+  theme: {
+    extend: {
+     keyframes: {
   marquee: {
-    from: { transform: 'translateX(0)' },
-    to:   { transform: 'translateX(-100%)' },
+    "0%": { transform: "translate3d(0,0,0)" },
+    "100%": { transform: "translate3d(-50%,0,0)" }, // 👈 important
   },
 },
 animation: {
-  marquee: 'marquee 30s linear infinite',
+  marquee: "marquee 30s linear infinite",
 },
+    },
   },
-},
   plugins: [
-    require('tailwind-scrollbar'), // <-- add this
+    
+    require('@tailwindcss/line-clamp'),
   ],
-
 }
-
