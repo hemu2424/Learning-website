@@ -3,21 +3,9 @@
 @tailwind utilities;
 
 
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
 
-.animate-marquee {
-  animation: marquee 120s linear infinite;
-  will-change: transform;
-  animation-fill-mode: none;
-  animation-play-state: running;
-}
+
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-100%); }
@@ -33,3 +21,4 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+

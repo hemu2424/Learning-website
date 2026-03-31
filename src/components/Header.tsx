@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { MarqueeText } from "./ui/home/MarqueeComponents";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,13 +81,14 @@ const Header = () => {
       </header>
 
       {/* Moving Ticker */}
-      <div className="bg-black text-white py-2 overflow-hidden whitespace-nowrap">
-        <div className="animate-marquee inline-block">
-          <span className="mx-8">✨ ED IN C++ BOOTCAMP</span>
-          <span className="mx-8">✨ USER ENROLLED IN SQL BOOTCAMP</span>
-          <span className="mx-8">✨ USER JOINED PYTHON PROGRAM</span>
-        </div>
-      </div>
+      <MarqueeText 
+  text="✨ USER ENROLLED IN C++ BOOTCAMP ✨ USER ENROLLED IN SQL BOOTCAMP ✨ USER JOINED PYTHON PROGRAM"
+  repeat={5} 
+  speed={40} 
+  className="bg-black text-white py-2"
+  itemClassName="text-sm font-bold tracking-wide"
+ 
+/>
     </>
   );
 };

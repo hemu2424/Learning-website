@@ -1,157 +1,32 @@
-import Community from "../components/sections/Community/Community";
-import card1 from "../assets/home/hand.webp"
-import card2 from "../assets/home/girl_laptop.webp"
-import card3 from "../assets/home/team.png"
-import card4 from "../assets/home/liberty.avif"
 
-import dmImg from "../assets/home/digital_marketing.webp";
-import promptImg from "../assets/home/promt_eng.webp";
-import javaImg from "../assets/home/Java_bootcamp.webp";
-import gitImg from "../assets/home/Git_Github_bootcamp.webp";
-import cppImg from "../assets/home/C++_image.webp";
-import { communityList } from "../types/communityData";
+import card1 from "../../assets/home/hand.webp"
+import card2 from "../../assets/home/girl_laptop.webp"
+import card3 from "../../assets/home/team.png"
+import card4 from "../../assets/home/liberty.avif"
+
+
+import { communityList } from "../../types/communityData";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const programs = [
-  { title: "Java Bootcamp", image: javaImg, enrolled: "19.7k", date: "30 MAR 26" },
-  { title: "Git & GitHub Bootcamp", image: gitImg, enrolled: "10.8k", date: "02 APR 26" },
-  { title: "C++ Bootcamp", image: cppImg, enrolled: "18.4k", date: "06 APR 26" },
-  { title: "Digital Marketing Bootcamp", image: dmImg, enrolled: "34k", date: "26 MAR 26" },
-  { title: "JavaScript Bootcamp", image: promptImg, enrolled: "20.3k", date: "23 MAR 26" },
-];
+import { MarqueeText, ImageMarquee, AdvisorMarquee } from "../../components/ui/home/MarqueeComponents";
 
-// --- REVIEWS DATA ---
-const reviews = [
-  { text: "The Full Stack Web Development bootcamp was a game changer for me. Building real-world projects with React and Node.js gave me the confidence to crack my first internship.", author: "Rohan Desai", avatar: "https://ui-avatars.com/api/?name=Rohan+Desai&background=random" },
-  { text: "I was skeptical about the MS Study Abroad program at first, but the visa interview preparation and guidance they provided saved me so much time and money. Highly recommend!", author: "Ananya Patel", avatar: "https://ui-avatars.com/api/?name=Ananya+Patel&background=random" },
-  { text: "Refer a friend to LetsUpgrade and earn premium tech gadgets, smartwatches, and Amazon gift cards. Start sharing your unique link today!", isPromo: true },
-  { text: "The Cloud and DevOps instructors are top-notch. They don't just teach theory; they walk you through AWS deployments step-by-step. Great community support too.", author: "Vikram Singh", avatar: "https://ui-avatars.com/api/?name=Vikram+Singh&background=random" },
-  { text: "I absolutely love the peer-to-peer learning environment. Whenever I got stuck on a Python data structure problem, the community and mentors were there to help within minutes.", author: "Priya Sharma", avatar: "https://ui-avatars.com/api/?name=Priya+Sharma&background=random" },
-  { text: "Completed the UI/UX design certification. The feedback sessions on our Figma prototypes were incredibly detailed. It feels like getting industry-level experience.", author: "Karan Mehta", avatar: "https://ui-avatars.com/api/?name=Karan+Mehta&background=random" },
-  { text: "Love learning with us? Become a Student Ambassador! Represent LetsUpgrade on your campus and unlock exclusive gold, silver, and bronze tier rewards.", isPromo: true },
-  { text: "The Data Analytics bootcamp covered everything from basic SQL to advanced Tableau dashboards. I finally understand how to clean and present data professionally.", author: "Neha Gupta", avatar: "https://ui-avatars.com/api/?name=Neha+Gupta&background=random" },
-  { text: "Joined the B.Tech CSE program and it's completely different from traditional colleges. The focus is purely on modern tech stacks and AI core skills.", author: "Aditya Verma", avatar: "https://ui-avatars.com/api/?name=Aditya+Verma&background=random" },
-  { text: "Cyber Security always intimidated me, but the Zero to Hero bootcamp broke down complex networking concepts into digestible modules. The hands-on labs were fantastic.", author: "Sneha Reddy", avatar: "https://ui-avatars.com/api/?name=Sneha+Reddy&background=random" },
-  { text: "The free IELTS training included in the Study Abroad package is a steal. The mock tests and speaking practice sessions really boosted my band score.", author: "Arjun Nair", avatar: "https://ui-avatars.com/api/?name=Arjun+Nair&background=random" },
-  { text: "Don't just learn, earn! Share your referral link with your classmates and win exclusive LetsUpgrade T-shirts and backpacks. Check your dashboard for the link.", isPromo: true },
-  { text: "It was a great experience with LetsUpgrade on following the Data Science essentials course. I improved my fundamental skills in Python. The instructor did it very well.", author: "Sudhasan Kesavan", avatar: "https://ui-avatars.com/api/?name=Sudhasan+Kesavan&background=random" },
-  { text: "Share your referral link now and win T-shirts, stickers, notebooks, bags, tech gadgets, and more! Watch your points grow and unlock exciting rewards.", isPromo: true },
-  { text: "It was an honour to study from the professionals of LetsUpgrade. They were very supportive to not only some chosen ones but each one of the students who were attending their lectures.", author: "Prakhar Vaid", avatar: "https://ui-avatars.com/api/?name=Prakhar+Vaid&background=random" },
-  { text: "I had an amazing learning experience with LetsUpgrade. I enrolled in two programs Javascript Essentials Program and Python Programming. The tutors were really nice.", author: "Tanya Nain", avatar: "https://ui-avatars.com/api/?name=Tanya+Nain&background=random" },
-  { text: "Awesome platform to gain skills. Teachers are very good. They behave more like our friends than our teachers which I really liked. Overall a really good study environment.", author: "Sanidhya Sharma", avatar: "https://ui-avatars.com/api/?name=Sanidhya+Sharma&background=random" },
-  { text: "1) Tableau Essentials Program experience: Lectures were interactive and got an opportunity to learn and explore new things. I loved this course.", author: "Aishwarya", avatar: "https://ui-avatars.com/api/?name=Aishwarya&background=random" },
-  { text: "It was really nice learning with LetsUpgrade a online learning platform. I had applied for Java Essential program and learnt many things from it.", author: "Srushti Bhosale", avatar: "https://ui-avatars.com/api/?name=Srushti+Bhosale&background=random" },
-  { text: "I did web development essentials course from let's upgrade and I found it quite interesting and the faculty teacher teaching us was knowledgeable.", author: "Smritika Kumari", avatar: "https://ui-avatars.com/api/?name=Smritika+Kumari&background=random" }
-];
+import { programs, logos,advisors,futureTechPrograms, reviews } from "../../data/homeData";
+import ReferSection from "./ReferSection";
+
+
 
 const shuffleArray = (array:any[]) => [...array].sort(() => Math.random() - 0.5);
 
-type MarqueeTextProps = {
-  text: string; repeat?: number; speed?: number; className?: string; itemClassName?: string; gap?: string;
-};
 
-const MarqueeText = ({ text, repeat = 10, speed, className = "", itemClassName = "", gap = "" }: MarqueeTextProps) => {
-  return (
-    <div className={`flex whitespace-nowrap pointer-events-none ${className}`}>
-      {[0, 1].map((i) => (
-        <div key={i} className="flex" style={{ animation: `marquee ${speed}s linear infinite` }}>
-          {Array(repeat).fill(text).map((item, index) => (
-            <span key={index} className={`${itemClassName} ${gap}`}>{item}</span>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-};
 
-type ImageItem = { src: string; name: string; };
-type ImageMarqueeProps = { items: ImageItem[]; speed?: number; reverse?: boolean; gap?: string; };
 
-const ImageMarquee = ({ items, speed = 60, reverse = false }: ImageMarqueeProps) => {
-  return (
-    <div className="overflow-hidden w-full relative">
-      <div className="flex whitespace-nowrap animate-marquee gap-3" style={{ animationDuration: `${speed}s`, animationDirection: reverse ? "reverse" : "normal" }}>
-        {[...items, ...items].map((item, index) => (
-          <div key={index} className="flex flex-col items-center flex-shrink-0 w-[150px] px-2">
-            <div className="h-12 flex items-center justify-center">
-              <img src={item.src} alt={item.name} className="max-h-full max-w-full object-contain" />
-            </div>
-            <p className="mt-2 text-xs text-center text-gray-700 truncate w-full">{item.name}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
 
-// --- SCHOOL OF FUTURETECH DATA ---
-const futureTechPrograms = [
-  { bg: "https://lucdn.letsupgrade.net/assets/Untitled_design_19_d19658916f.png", title: "Cloud and DevOps", status: "LAUNCHING SOON", statusColor: "text-cyan-400" },
-  { bg: "https://lucdn.letsupgrade.net/assets/B_Tech_CSE_Op_1_1_ac44a184d3.webp", title: "India's Best BTech CSE", status: "JOIN NOW", statusColor: "text-yellow-400" },
-  { bg: "https://lucdn.letsupgrade.net/assets/Untitled_design_17_648b64d2ae.png", title: "Data Science", status: "LAUNCHING SOON", statusColor: "text-cyan-400" },
-  { bg: "https://lucdn.letsupgrade.net/assets/Untitled_design_16_1d2010587d.png", title: "Full Stack Development with AI", status: "LAUNCHING SOON", statusColor: "text-cyan-400" },
-  { bg: "https://lucdn.letsupgrade.net/assets/Untitled_design_20_73979e14f3.png", title: "Cyber Security", status: "LAUNCHING SOON", statusColor: "text-cyan-400" },
-  { bg: "https://lucdn.letsupgrade.net/assets/vlsi_chip_25efd33045.webp", title: "VLSI Design & Tech", status: "LAUNCHING SOON", statusColor: "text-cyan-400" },
-  { bg: "https://lucdn.letsupgrade.net/assets/Executive_M_Tech_1_c46d2407e7.webp", title: "Executive M.Tech", status: "JOIN NOW", statusColor: "text-yellow-400" },
-  { bg: "https://lucdn.letsupgrade.net/assets/EV_Op_2_1_82f3a69864.webp", title: "Electric Vehicles", status: "LAUNCHING SOON", statusColor: "text-cyan-400" }
-];
 
-const logos = [
-  { src: "https://lucdn.letsupgrade.net/assets/IIT_Dhanbad_e537609130.webp", name: "Indian Institute of Technology Dhanbad" },
-  { src: "https://lucdn.letsupgrade.net/assets/VIT_74f0538042.webp", name: "Vellore Institute of Technology (VIT)" },
-  { src: "https://lucdn.letsupgrade.net/assets/National_Institute_of_Technology_Silchar_8beb2efa6d.webp", name: "National Institute of Technology, Silchar" },
-  { src: "https://lucdn.letsupgrade.net/assets/National_Institute_of_Technology_Srinagar_a631c2d4fa.webp", name: "National Institute of Technology, Srinagar" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/National_Institute_of_Technology_AP_91c203c44e.webp", name: "National Institute of Technology, AP" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/NIT_Patna_0bf320193d.webp", name: "National Institute of Technology, Patna" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/Christ_University_e949fe8436.webp", name: "Christ University, Bangalore" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/Symbiosis_International_University_79771d5219.webp", name: "Symbiosis International University" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/BVDU_603ffe1bad.webp", name: "Bharati Vidyapeeth Deemed University" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/Maharaja_Sayajirao_University_0e1bc21b5d.webp", name: "Maharaja Sayajirao University" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/KIIT_10b059704e.webp", name: "Kalinga Institute of Industrial Technology" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/Shiv_Nadar_University_f3542f324b.webp", name: "Shiv Nadar University" }, 
-  { src: "https://lucdn.letsupgrade.net/assets/Cochin_University_b0239178d2.webp", name: "Cochin University of Science" }
-];
-
-const advisors = [
-  { name: "Shubhadeep Sarkar", role: "VP, Engineering", image: "https://lucdn.letsupgrade.net/assets/Syama_Sundar_Santosh_Kumar_Gopasana_df13382756.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/accenture_d615a0fbf9.webp" },
-  { name: "Dr. Preet Deep Singh", role: "Principal Architect", image: "https://lucdn.letsupgrade.net/assets/Dr_Preet_Deep_singh_c004141c91.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/invest_idia_95b130af63.webp" },
-  { name: "Rushikesh Vinchurkar", role: "Head, Mobile Apps", image: "https://lucdn.letsupgrade.net/assets/Rushikesh_e7f6239cc2.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/propvr_c4bac1594e.webp" },
-  { name: "Prakher K Srivastava", role: "Chief Tech Evangelist", image: "https://lucdn.letsupgrade.net/assets/Prakher_Kumar_Srivastava_2382ac5abb.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/barclays_6ab0d4737a.webp" },
-  { name: "Tanvi Shah", role: "Co-Founder & CEO", image: "https://lucdn.letsupgrade.net/assets/Tanvi_Shah_3655be2078.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/women_techmakers_67a045b4d4.webp" },
-  { name: "Ashish Tiwari", role: "VP, Tech/Investor", image: "https://lucdn.letsupgrade.net/assets/ASHISH_TIWARI_9ffb9e0365.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/elastic_1eaf0ed685.webp" },
-  { name: "Shubhadeep Sarkar", role: "Enterprise Architect", image: "https://lucdn.letsupgrade.net/assets/shubhadeep_sarkar_1053194930.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/worxogo_5384480c81.webp" },
-  { name: "Raju Kumar Singh", role: "Head of Product", image: "https://lucdn.letsupgrade.net/assets/raju_kumar_c2ba6c7d12.webp", companyLogo: "https://lucdn.letsupgrade.net/assets/amadeus_a05f14a926.webp" }
-];
-
-type AdvisorItem = { name: string; role: string; image: string; companyLogo: string; };
-
-const AdvisorMarquee = ({ items, speed = 60, reverse = false }: { items: AdvisorItem[], speed?: number, reverse?: boolean }) => {
-  return (
-    <div className="overflow-hidden w-full relative mt-12 mb-10">
-      <div className="flex whitespace-nowrap animate-marquee gap-6" style={{ animationDuration: `${speed}s`, animationDirection: reverse ? "reverse" : "normal" }}>
-        {[...items, ...items, ...items].map((item, index) => (
-          <div key={index} className="flex flex-col items-center flex-shrink-0 w-[140px] px-2 group">
-            <div className="w-full h-[150px] bg-[#f7f7f7] rounded-t-[4rem] rounded-b-xl flex items-end justify-center overflow-hidden relative transition-transform duration-300 group-hover:-translate-y-2">
-              {item.image ? (
-                <img src={item.image} alt={item.name} className="w-[90%] object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
-              ) : (
-                <div className="w-full h-full bg-gray-200 animate-pulse"></div>
-              )}
-            </div>
-            <h4 className="mt-4 text-[11px] font-extrabold text-gray-900 text-center truncate w-full tracking-wide">{item.name}</h4>
-            <p className="mt-0.5 text-[10px] text-gray-500 text-center truncate w-full">{item.role}</p>
-            <div className="h-4 flex items-center justify-center mt-1 w-full">
-              {item.companyLogo && <img src={item.companyLogo} alt="Company" className=" object-contain" />}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
 
 
 const Home = () => {
+  const navigate = useNavigate();
 
   // --- ANIMATED COUNTER COMPONENT ---
   const AnimatedCounter = ({ targetNumber, duration = 2500 }: { targetNumber: number, duration?: number }) => {
@@ -180,7 +55,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="relative min-h-screen w-full flex flex-col items-center overflow-x-hidden overflow-y-auto scroll-smooth bg-white scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+      <div className="relative min-h-screen w-full flex flex-col items-center overflow-x-hidden overflow-y-auto no-scrollbar">
 
         {/* 🔥 Background Marquee */}
         <div className="absolute inset-0 flex mt-[65px]">
@@ -229,9 +104,12 @@ const Home = () => {
                 <h3 className="font-bold text-2xl sm:text-3xl text-white leading-tight mb-5 tracking-tight">
                   Explore Free Certificate<br/>Program
                 </h3>
-                <button className="border border-white/40 px-5 py-1.5 rounded-full text-[11px] font-semibold text-white hover:bg-white hover:text-black transition-colors">
-                  Get Certified
-                </button>
+                <button 
+      onClick={() => navigate('/programs')}
+      className="border border-white/40 px-5 py-1.5 rounded-full text-[11px] font-semibold text-white hover:bg-white hover:text-black transition-colors"
+    >
+      Get Certified
+    </button>
               </div>
               <img src={card1} className="absolute bottom-0 left-0 w-full h-full object-contain object-bottom opacity-90" alt="Free Certificate" />
               {/* Fade to black gradient to make text legible */}
@@ -261,9 +139,12 @@ const Home = () => {
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight">
                     India's Best B.Tech CSE
                   </h3>
-                  <button className="border border-white/40 px-5 py-1.5 rounded-full text-[11px] font-semibold text-white hover:bg-white hover:text-black transition-colors">
-                    Apply Now
-                  </button>
+                  <button
+  onClick={() => window.open("https://isu.ac.in/btech-cse/?utm_source=letsupgrade&utm_medium=homepage&utm_campaign=hero&utm_content=apply-now", "_blank")}
+  className="border border-white/40 px-5 py-1.5 rounded-full text-[11px] font-semibold text-white hover:bg-white hover:text-black transition-colors"
+>
+  Apply Now
+</button>
                 </div>
                 <img src={card3} className="absolute bottom-0 right-0 w-[100%] h-[90%] object-cover object-bottom opacity-90 mix-blend-lighten" alt="B.Tech CSE" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent pointer-events-none"></div>
@@ -275,7 +156,9 @@ const Home = () => {
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight">
                     AI Core Skill
                   </h3>
-                  <button className="border border-white/40 px-5 py-1.5 rounded-full text-[11px] font-semibold text-white hover:bg-white hover:text-black transition-colors">
+                  <button 
+                  onClick={() => navigate('/programs/ai-core-skills-working-professional')}
+                  className="border border-white/40 px-5 py-1.5 rounded-full text-[11px] font-semibold text-white hover:bg-white hover:text-black transition-colors">
                     Enroll Program
                   </button>
                 </div>
@@ -344,10 +227,15 @@ const Home = () => {
                   </div>
                 ))}
               </div>
+              <div>
 
-              <p className="mt-8 text-xs font-semibold text-gray-400 cursor-pointer text-center hover:text-white transition-colors">
+              <button 
+                onClick={() => navigate('/programs')}
+                className="ml-[460px] mt-8 text-xs font-semibold text-gray-400 cursor-pointer text-center hover:text-white transition-colors"
+              >
                 view all certificate programs &gt;
-              </p>
+              </button>
+              </div>
 
             </div>
           </div>
@@ -576,66 +464,15 @@ const Home = () => {
               <ul className="text-[13px] text-gray-600 space-y-2 mb-6 flex-1 list-disc pl-4 marker:text-gray-400">
                 {program.features.map((feature, i) => <li key={i} className="pl-1 leading-snug">{feature}</li>)}
               </ul>
-              <button className="w-full bg-[#1a1a1a] hover:bg-black text-white text-sm font-semibold py-3.5 rounded-full transition-colors duration-200">Apply Now</button>
+              <button
+               onClick={() => window.open("https://www.itm.edu/lp/ms-abroad/", "_blank")}
+              className="w-full bg-[#1a1a1a] hover:bg-black text-white text-sm font-semibold py-3.5 rounded-full transition-colors duration-200">Apply Now</button>
             </div>
           </div>
         ))}
       </div>
+      <ReferSection/>
 
-      <div className="relative w-full overflow-hidden py-10 text-center">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <MarqueeText text="Refer and Earn Rewards" repeat={10} speed={200} className="opacity-40" itemClassName="text-[60px] sm:text-[100px] md:text-[140px] font-extrabold uppercase text-green-200" gap="mr-16" />
-        </div>
-        <div className="relative z-10 w-full px-4 ">
-          <div className="flex items-center justify-center gap-2 max-w-6xl mx-auto">
-            <div className="h-[2px] flex-1 bg-gradient-to-l from-green-500 via-green-400 to-transparent" />
-            <p className="px-3 text-xs sm:text-sm tracking-wide text-green-600 uppercase font-semibold whitespace-nowrap text-center">Refer & Earn</p>
-            <div className="h-[2px] flex-1 bg-gradient-to-r from-green-500 via-green-400 to-transparent" />
-          </div>
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 mt-4">
-          <h2 className="relative top-2 text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 italic" style={{ fontFamily: "'Playfair Display', serif" }}>Refer & Earn</h2>
-          <p className="relative top-9 text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">Refer your friends to LetsUpgrade programs and earn T-shirts, stickers, notebooks, bags, tech gadgets, and more</p>
-        </div>
-      </div>
-
-      <div className="relative w-full max-w-6xl mx-auto mt-20 px-4 mb-20">
-        <div className="flex justify-center -mb-12 relative z-20">
-          <div className="flex -space-x-4 sm:-space-x-6">
-            {[ "https://lucdn.letsupgrade.net/assets/watch_16b3cac61a.png", "https://lucdn.letsupgrade.net/assets/headphone_d185013861.png", "https://lucdn.letsupgrade.net/assets/Gift_card_e00a348402.webp", "https://lucdn.letsupgrade.net/assets/Tshirt_c91548fb45.png" ].map((src, index) => (
-              <div key={index} className="w-20 h-20 sm:w-28 sm:h-28 bg-white rounded-full border border-green-200 shadow-md flex items-center justify-center p-2 sm:p-3 overflow-hidden">
-                <img src={src} alt="swag" className="w-full h-full object-contain" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative z-10 bg-[#effdf5] border border-green-200 rounded-[2.5rem]  overflow-hidden shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 items-center">
-            <div className="flex flex-col items-start text-left order-2 md:order-1 p-6">
-              <h2 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 italic tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>Step 1</h2>
-              <h3 className="text-xl md:text-2xl text-gray-800 mb-3">Generate your Referral link - Share it</h3>
-              <p className="text-sm text-gray-600 leading-relaxed max-w-md mb-8">3...2...1... It's that easy to generate your referral link! <br className="hidden sm:block" /> Once generated, share it with all your friends, and if they join using your unique link, you'll earn points to win swags.</p>
-              <button className="bg-[#1a1a1a] hover:bg-black text-white text-sm font-semibold px-8 py-3 rounded-full transition-colors duration-200 shadow-md hover:shadow-lg">Refer Now</button>
-            </div>
-            <div className="flex justify-center md:justify-end order-1 md:order-2">
-              <img src="https://lucdn.letsupgrade.net/assets/step_1_eeae65ea5f.png" alt="Step 1 Illustration" className="w-full max-w-[400px] object-contain" />
-            </div>
-          </div>
-          <div className="h-20 md:h-32"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 items-center">
-            <div className="flex justify-center md:justify-start">
-              <img src="https://lucdn.letsupgrade.net/assets/step_2_399e3fe9c2.png" alt="Step 2 Illustration" className="w-full max-w-[400px] object-contain" />
-            </div>
-            <div className="flex flex-col items-start md:items-end text-left md:text-right p-6">
-              <h2 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 italic tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>Step 2</h2>
-              <h3 className="text-xl md:text-2xl text-gray-800 mb-3">See yourself top the leader board</h3>
-              <p className="text-sm text-gray-600 leading-relaxed max-w-md mb-8">For every friend who joins using your referral link, your points increase, giving you a greater chance to win swags. Good luck!</p>
-              <button className="bg-[#1a1a1a] hover:bg-black text-white text-sm font-semibold px-8 py-3 rounded-full transition-colors duration-200 shadow-md hover:shadow-lg">Refer Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="w-full overflow-hidden py-10  flex flex-col items-center">
         <div className="relative w-full flex flex-col items-center justify-center ">
@@ -796,7 +633,9 @@ const Home = () => {
                       <div key={i} className={`p-6 rounded-2xl shadow-sm border ${review.isPromo ? 'bg-[#e27300] border-[#c46400] text-white' : 'bg-white border-gray-100 text-gray-800'}`}>
                         <p className={`text-xs sm:text-sm leading-relaxed ${review.isPromo ? 'font-medium' : ''}`}>{review.text}</p>
                         {review.isPromo ? (
-                          <button className="mt-5 w-full bg-white text-[#e27300] font-bold text-xs py-2 rounded-full hover:bg-gray-100 transition">Refer Now</button>
+                          <button
+                          onClick={() => navigate('/refer')}
+                          className="mt-5 w-full bg-white text-[#e27300] font-bold text-xs py-2 rounded-full hover:bg-gray-100 transition">Refer Now</button>
                         ) : (
                           <div className="flex items-center gap-3 mt-5">
                             <img src={review.avatar} alt={review.author} className="w-6 h-6 rounded-full" />
