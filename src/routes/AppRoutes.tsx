@@ -12,6 +12,8 @@ import Explore from "../pages/Explore";
 import Community from "../pages/Community";
 import Studentambassador from "../pages/Studentambassador";
 import BlogDetail from "../pages/BlogDetail";
+import Sidebar  from "../components/Sidebar";
+import Login from "../components/Login";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +23,7 @@ const AppRoutes = () => {
         <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
+        
         <Route path="/blogs/:slug" element={<BlogDetail />} />
         </Route>
 
@@ -34,7 +37,8 @@ const AppRoutes = () => {
         <Route path="/student-ambrastor" element={<Studentambassador/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
         
-        
+        <Route path="/sidebar" element={<Sidebar />} />
+          <Route path="/login" element={<Login />} />
 
 
 
