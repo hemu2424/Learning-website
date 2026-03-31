@@ -13,6 +13,8 @@ import { MarqueeText, ImageMarquee, AdvisorMarquee } from "../../components/ui/h
 
 import { programs, logos,advisors,futureTechPrograms, reviews } from "../../data/homeData";
 import ReferSection from "./ReferSection";
+import BoardAdvisors from "./BoardAdvisors";
+import PresenceSection from "./PresenceSection";
 
 
 
@@ -242,51 +244,19 @@ const Home = () => {
         </div>
 
 
-      <div className="w-full flex flex-col items-center">
+      <PresenceSection
+  headingText="our presence spans"
+  marqueeText="LEARN BUILD SHARE GROW"
+  subHeading="Students from top colleges upskill with LetsUpgrade"
+  description="Students enroll in universities for degrees, but they turn to LetsUpgrade for skills"
 
-        {/* REPEATED CERTIFICATE SECTION */}
-        <div className="mt-4 w-full flex flex-col items-center justify-center">
-          <div className="relative z-10 flex w-full items-center justify-center gap-2 max-w-6xl">
-            <div className="h-[3px] flex-1 bg-gradient-to-l from-yellow-500/50 via-yellow-400/50 to-transparent" />
-            <div className="px-3 text-xs md:text-xl font-semibold tracking-wide text-amber-400 uppercase whitespace-nowrap text-center">
-              our presence spans
-            </div>
-            <div className="h-[3px] flex-1 bg-gradient-to-r from-yellow-500/50 via-yellow-400/50 to-transparent" />
-          </div>
+  marqueeColor="text-yellow-200"
+  gradientFrom="from-yellow-500/50"
+  gradientVia="via-yellow-400/50"
+  textColor="text-amber-400"
 
-          <div className="relative w-full overflow-hidden leading-none -mt-2 sm:-mt-4">
-            <div className="w-full">
-              <MarqueeText
-                text="LEARN BUILD SHARE GROW"
-                repeat={20}
-                speed={300}
-                className="opacity-60"
-                itemClassName="text-4xl sm:text-6xl md:text-8xl font-black uppercase leading-none text-yellow-200"
-                gap="mr-16"
-              />
-            </div>
-            <h2
-              className="absolute top-[55px] left-1/2 -translate-x-1/2 -translate-y-1/2 font-behindTheNineties text-xl md:text-3xl font-medium text-neutral-900 capitalize italic text-center"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              Students from top colleges upskill with LetsUpgrade
-            </h2>
-          </div>
-
-          <p className="mt-0 text-center text-base md:text-lg max-w-3xl text-gray-700 relative z-10">
-            Students enroll in universities for degrees, but they turn to LetsUpgrade for skills
-          </p>
-        </div>
-
-        <div className="w-full">
-          <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden mt-6">
-            <div className="flex flex-col gap-6">
-              <ImageMarquee items={logos} speed={30} />
-              <ImageMarquee items={logos} speed={40} reverse />
-            </div>
-          </div>
-        </div>
-      </div>
+  logos={logos}
+/>
 
       {/* --------------- */}
       <div className="w-full max-w-6xl mx-auto mt-16 px-4">
@@ -471,30 +441,16 @@ const Home = () => {
           </div>
         ))}
       </div>
-      <ReferSection/>
+      <ReferSection marqueeColor="text-green-200" fromColor="from-green-500" viaColor="via-green-400" textColor="text-green-600" />
+      <BoardAdvisors
+  marqueeColor="text-gray-800"
+  fromColor="from-gray-500/50"
+  viaColor="via-gray-400/50"
+  textColor="text-gray-600"
+/>
 
 
-      <div className="w-full overflow-hidden py-10  flex flex-col items-center">
-        <div className="relative w-full flex flex-col items-center justify-center ">
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-            <MarqueeText text="BOARD OF ADVISORS" repeat={8} speed={250} className="opacity-[0.04]" itemClassName="text-[55px] sm:text-[80px] md:text-[110px] font-extrabold uppercase text-gray-900" gap="mr-8" />
-          </div>
-          <div className="relative z-10 w-full px-4 ">
-            <div className="flex items-center justify-center gap-4 max-w-5xl mx-auto">
-              <div className="h-[2px] flex-1 bg-gradient-to-l from-gray-300 to-transparent" />
-              <p className="text-[15px] tracking-[0.2em] text-gray-400 uppercase font-bold whitespace-nowrap text-center">BOARD OF ADVISORS</p>
-              <div className="h-[2px] flex-1 bg-gradient-to-r from-gray-300 to-transparent" />
-            </div>
-          </div>
-          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <h2 className="relative top-4 text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 italic tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>LetsUpgrade Advisory Board</h2>
-            <p className="relative top-6 text-xs sm:text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">This is the part that keeps us energized day and night, as our Advisory Board members challenge us with numerous questions to answer constantly</p>
-          </div>
-        </div>
-        <div className="relative z-10 w-screen left-1/2 -translate-x-1/2 mt-8">
-          <AdvisorMarquee items={advisors} speed={45} />
-        </div>
-      </div>
+     
 
       <div className="relative w-full overflow-hidden py-24 flex flex-col items-center bg-[#fafafa]">
         <div className="absolute top-12 w-full flex items-center justify-center pointer-events-none z-0">

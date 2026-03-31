@@ -1,21 +1,40 @@
 import React from 'react'
 import { MarqueeText } from '../../components/ui/home/MarqueeComponents'
 
-const ReferSection = () => {
+// Define the shape of your props
+interface ReferSectionProps {
+  marqueeColor: string;
+  fromColor?: string;
+  viaColor?: string;
+  textColor?: string;
+}
+
+// Pass the interface to the component
+const ReferSection: React.FC<ReferSectionProps> = ({ marqueeColor,fromColor ,viaColor,textColor}) => {
   return (
     <div>
-       <div className="relative w-full overflow-hidden py-10 text-center">
+        <div className="relative w-full overflow-hidden py-10 text-center">
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <MarqueeText text="Refer and Earn Rewards" repeat={10} speed={200} className="opacity-40" itemClassName="text-[60px] sm:text-[100px] md:text-[140px] font-extrabold uppercase text-green-200" gap="mr-16" />
+                {/* Dynamically pass the marqueeColor here */}
+                <MarqueeText 
+                  text="Refer and Earn Rewards" 
+                  repeat={10} 
+                  speed={200} 
+                  className="opacity-40" 
+                  itemClassName={`text-[60px] sm:text-[100px] md:text-[140px] font-extrabold uppercase ${marqueeColor}`} 
+                  gap="mr-16" 
+                />
               </div>
               <div className="relative z-10 w-full px-4 ">
                 <div className="flex items-center justify-center gap-2 max-w-6xl mx-auto">
-                  <div className="h-[2px] flex-1 bg-gradient-to-l from-green-500 via-green-400 to-transparent" />
-                  <p className="px-3 text-xs sm:text-sm tracking-wide text-green-600 uppercase font-semibold whitespace-nowrap text-center">Refer & Earn</p>
-                  <div className="h-[2px] flex-1 bg-gradient-to-r from-green-500 via-green-400 to-transparent" />
+                  <div className={`h-[2px] flex-1 bg-gradient-to-l ${fromColor} ${viaColor} to-transparent`} />
+                  <p className={`px-3 text-xs sm:text-sm tracking-wide ${textColor} uppercase font-semibold whitespace-nowrap text-center`}>Refer & Earn</p>
+                  <div className={`h-[2px] flex-1 bg-gradient-to-r ${fromColor} ${viaColor} to-transparent`} />
                 </div>
               </div>
+              
               <div className="relative z-10 max-w-4xl mx-auto px-4 mt-4">
+                {/* Fixed font family usage with standard CSS classes if possible, or inline as you had */}
                 <h2 className="relative top-2 text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 italic" style={{ fontFamily: "'Playfair Display', serif" }}>Refer & Earn</h2>
                 <p className="relative top-9 text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">Refer your friends to LetsUpgrade programs and earn T-shirts, stickers, notebooks, bags, tech gadgets, and more</p>
               </div>
