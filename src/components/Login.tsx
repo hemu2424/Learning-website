@@ -70,7 +70,7 @@ export default function Login() {
       {/* RIGHT SIDE */}
       <div className="w-1/2 relative rounded-2xl overflow-hidden">
         <img
-          src="/main.logo.png"
+          src="/login_img.png"
           alt="banner"
           className="h-full w-full object-cover"
         />
