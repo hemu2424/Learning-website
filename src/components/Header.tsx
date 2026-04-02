@@ -7,7 +7,7 @@ const Header = () => {
   
   // TODO: Replace this mock state with your actual authentication logic 
   // (e.g., from Redux, Zustand, or React Context)
-  const isLoggedIn = false; 
+  const isLoggedIn = true; 
 
   return (
     <>

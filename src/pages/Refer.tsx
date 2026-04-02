@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaStar, FaCoins } from 'react-icons/fa';
 import { IoMdCheckmarkCircle, IoMdShare, IoMdClose } from 'react-icons/io';
-import { MdDragHandle, MdPeopleAlt } from 'react-icons/md';
+import { MdCheckCircle, MdDragHandle, MdPeopleAlt } from 'react-icons/md';
 import { RiResetLeftFill } from 'react-icons/ri';
 
 // --- Asset URLs ---
@@ -173,11 +173,11 @@ const ReferPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-800 pb-16 relative">
+    <div className="min-h-screen bg-white font-sans text-gray-800  relative">
       
       {/* Main Page Content */}
       <div className={`transition-opacity duration-300 ${isModalOpen ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
-        <div className="max-w-4xl mx-auto px-4 pt-6 space-y-8">
+        <div className=" mx-auto   space-y-8">
           
           {/* --- Top Banner --- */}
           <div className="relative bg-[#E8F5E9] border border-green-200 rounded-xl p-6 overflow-hidden flex justify-between items-center h-48">
@@ -263,15 +263,15 @@ const ReferPage: React.FC = () => {
             </div>
             <div className="flex justify-between w-3/4 text-center">
               <div className="flex flex-col gap-2 w-1/3">
-                <span className="text-gray-400 text-xs flex items-center justify-center gap-1"><span className="material-icons text-[14px]">person_add</span> Signups</span>
+                <span className="text-gray-400 text-xs flex items-center justify-center gap-1"><span className="material-icons text-[14px]"><MdPeopleAlt /></span> Signups</span>
                 <span className="font-bold text-blue-600">0</span>
               </div>
               <div className="flex flex-col gap-2 w-1/3">
-                <span className="text-gray-400 text-xs flex items-center justify-center gap-1"><span className="material-icons text-[14px]">school</span> Enrollments</span>
+                <span className="text-gray-400 text-xs flex items-center justify-center gap-1"><span className="material-icons text-[14px]"><MdPeopleAlt /></span> Enrollments</span>
                 <span className="font-bold text-blue-600">0</span>
               </div>
               <div className="flex flex-col gap-2 w-1/3">
-                <span className="text-[#00BFA5] font-medium text-xs flex items-center justify-center gap-1"><span className="material-icons text-[14px]">check_circle</span> Completed</span>
+                <span className="text-[#00BFA5] font-medium text-xs flex items-center justify-center gap-1"><span className="material-icons text-[14px]"><MdCheckCircle /></span> Completed</span>
                 <span className="font-bold text-[#00BFA5]">0</span>
               </div>
             </div>
