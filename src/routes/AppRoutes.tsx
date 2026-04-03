@@ -46,8 +46,8 @@ const AppRoutes = () => {
           <Route path="/dashboard" element={<DashboardPage />} />
           
           {/* These pages will now render inside the Dashboard Layout (Center area) */}
-          <Route path="/explore-programs" element={<Explore />} />
-          <Route path="/my-programs" element={<Programs />} />
+          <Route path="/programs" element={<Explore />} />
+          <Route path="/explore-programs" element={<Programs />} />
           <Route path="/refer" element={<Refer />} />
           <Route path="/coins" element={<CoinPage />} />
           <Route path="/student-ambassador" element={<Studentambassador />} />

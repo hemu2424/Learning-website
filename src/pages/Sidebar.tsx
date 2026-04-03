@@ -94,16 +94,16 @@ const Sidebar = () => {
           <NavItem
             icon={<Flame size={20} />}
             label="Explore Programs"
-             active={isActive('/my-programs')} // <--- Dynamic!
-            onClick={() => navigate('/my-programs')}
+             active={isActive('/explore-programs')} // <--- Dynamic!
+            onClick={() => navigate('/explore-programs')}
             
           />
           <NavItem
             icon={<Library size={20} />}
             label="My Programs"
            
-             active={isActive('/explore-programs')} // <--- Dynamic!
-             onClick={() => navigate('/explore-programs')}
+             active={isActive('/my-programs')} // <--- Dynamic!
+             onClick={() => navigate('/my-programs')}
           />
         </div>
 

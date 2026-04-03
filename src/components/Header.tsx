@@ -17,7 +17,7 @@ const Header = () => {
           {/* Left (Desktop only) */}
           <div className="hidden md:flex flex-1 gap-6">
             <NavItem to="/about" label="About LetsUpgrade" />
-            <NavItem to="/programs" label="Explore Programs" />
+            <NavItem to="/explore-programs" label="Explore Programs" />
           </div>
 
           {/* Center Logo */}
