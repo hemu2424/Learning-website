@@ -3,19 +3,19 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      animation: {
-
-        // We set it to 60s for a smooth, slow crawl. 
-        // Lower numbers (like 20s) make it faster.
-        'scroll-text': 'scrollText 60s linear infinite',
-      },
-      keyframes: {
-        scrollText: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-      },
+     keyframes: {
+  marquee: {
+    "0%": { transform: "translate3d(0,0,0)" },
+    "100%": { transform: "translate3d(-50%,0,0)" }, // 👈 important
+  },
+},
+animation: {
+  marquee: "marquee 30s linear infinite",
+},
     },
   },
-  plugins: [],
-};
+  plugins: [
+    
+    require('@tailwindcss/line-clamp'),
+  ],
+}
