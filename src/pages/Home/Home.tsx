@@ -4,6 +4,34 @@ import card2 from "../../assets/home/girl_laptop.webp"
 import card3 from "../../assets/home/team.png"
 import card4 from "../../assets/home/liberty.avif"
 
+import discover from "../../assets/home/discover.avif"
+import count_bg from "../../assets/home/count_bg.gif"
+
+import shu from "../../assets/home/shu.png"
+import Whitireia from "../../assets/home/whiteria.png"
+
+import Certifications from "../../assets/home/35_Certifications_31221d9153.webp"
+import Artboard from "../../assets/home/Artboard_4_dd6fb26409.webp"
+import London from "../../assets/home/Post_Work_Visa_Option_3_d31762be27.webp"
+
+import abroad_4_aa7d358621 from "../../assets/home/Artboard_4_dd6fb26409.webp"
+import abroad_5_b6e3f979b4 from "../../assets/home/abroad_5_b6e3f979b4.webp"
+
+import EPU1 from "../../assets/home/Artboard_7_7e42dde5f9.webp"
+import EPU2 from "../../assets/home/Artboard_8_1a9d7b7708.webp"
+import EPU3 from "../../assets/home/Artboard_9_89807f58e0.webp"
+
+import USAFlag from "../../assets/home/us.png";
+import UKFlag from "../../assets/home/gb.png";
+import NZFlag from "../../assets/home/nz.png";
+import JapanFlag from "../../assets/home/jp.png";
+import AustraliaFlag from "../../assets/home/au.png";
+
+
+
+
+
+
 
 import { communityList } from "../../types/communityData";
 import { useEffect, useState } from "react";
@@ -15,6 +43,7 @@ import { programs, logos,advisors,futureTechPrograms, reviews } from "../../data
 import ReferSection from "./ReferSection";
 import BoardAdvisors from "./BoardAdvisors";
 import PresenceSection from "./PresenceSection";
+import Certificate from "../Certificate/Certificate"
 
 
 
@@ -269,11 +298,11 @@ const Home = () => {
 
           <div className="flex-shrink-0 w-full sm:w-1/3 relative">
             <img
-              src="https://lucdn.letsupgrade.net/assets/Discover_Certificate_bca3a66871.webp"
+              src={discover}
               alt="banner"
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-contain grayscale"
+              className="w-full h-full object-contain grayscale rounded-3xl pl-3"
             />
           </div>
 
@@ -295,7 +324,7 @@ const Home = () => {
       <div className="w-full max-w-6xl mx-auto mt-16 mb-12 px-4">
         <div className="relative w-full h-[250px] sm:h-[300px] md:h-[300px] overflow-hidden flex items-center justify-center rounded-[2rem] bg-black shadow-lg">
           <img
-            src="https://lucdn.letsupgrade.net/assets/users_count_bg_73c24b4781.gif"
+            src={count_bg}
             alt="Radar Background Animation"
             loading="lazy"
             decoding="async"
@@ -356,11 +385,12 @@ const Home = () => {
       {/* COUNTRIES ROW */}
       <div className="relative z-10 flex flex-wrap justify-center gap-4 mt-10 max-w-4xl mx-auto px-4">
         {[
-          { name: "USA", flag: "https://flagcdn.com/w80/us.png" },
-          { name: "UK", flag: "https://flagcdn.com/w80/gb.png" },
-          { name: "NEW ZEALAND", flag: "https://flagcdn.com/w80/nz.png" },
-          { name: "JAPAN", flag: "https://flagcdn.com/w80/jp.png" },
-          { name: "AUSTRALIA", flag: "https://flagcdn.com/w80/au.png" },
+           { name: "USA", flag: USAFlag },
+  { name: "UK", flag: UKFlag },
+  { name: "NEW ZEALAND", flag: NZFlag },
+  { name: "JAPAN", flag: JapanFlag },
+  { name: "AUSTRALIA", flag: AustraliaFlag },
+
         ].map((country) => (
           <div key={country.name} className="bg-black text-white rounded-2xl w-24 h-24 sm:w-28 sm:h-28 flex flex-col items-center justify-center gap-3 hover:scale-105 transition-transform shadow-lg cursor-pointer">
             <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-700">
@@ -374,25 +404,25 @@ const Home = () => {
       {/* BENTO GRID LAYOUT */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 mt-10 max-w-5xl mx-auto px-4">
         <div className="relative rounded-[2rem] overflow-hidden h-[300px] md:h-[420px] shadow-sm group cursor-pointer">
-          <img src="https://lucdn.letsupgrade.net/assets/Post_Work_Visa_Option_3_d31762be27.webp" alt="London Sunset" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img src={London} alt="London Sunset" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-transparent"></div>
         </div>
 
         <div className="flex flex-col gap-4 h-[420px]">
           <div className="bg-white rounded-[2rem] p-5 shadow-sm border border-gray-100 flex-1 flex flex-col items-center justify-center hover:shadow-md transition">
-            <img src="https://lucdn.letsupgrade.net/assets/35_Certifications_31221d9153.webp" alt="Certifications" className="w-full h-full object-contain" />
+            <img src={Certifications} alt="Certifications" className="w-full h-full object-contain" />
           </div>
           <div className="bg-white rounded-[2rem] overflow-hidden relative flex-1 border border-gray-100 flex flex-col items-center justify-end shadow-sm hover:shadow-md transition">
-            <img src="https://lucdn.letsupgrade.net/assets/Artboard_4_dd6fb26409.webp" alt="IELTS" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={Artboard} alt="IELTS" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
 
         <div className="flex flex-col gap-4 h-[420px]">
           <div className="relative bg-[#1e4468] rounded-[2rem] overflow-hidden flex-1 flex flex-col items-center justify-center p-6 text-center group shadow-sm hover:shadow-md transition">
-            <img src="https://lucdn.letsupgrade.net/assets/abroad_4_aa7d358621.webp" alt="Visa Preparation" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src={abroad_4_aa7d358621} alt="Visa Preparation" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
           <div className="relative bg-[#eaf4eb] rounded-[2rem] overflow-hidden flex-1 flex flex-col items-center justify-center p-6 text-center shadow-sm hover:shadow-md transition">
-            <img src="https://lucdn.letsupgrade.net/assets/abroad_5_b6e3f979b4.webp" alt="Cost Savings" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={abroad_5_b6e3f979b4} alt="Cost Savings" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -408,18 +438,18 @@ const Home = () => {
 
       <div className="relative z-10 flex flex-wrap justify-center gap-4 mt-16 max-w-4xl mx-auto px-4">
         <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 w-64 h-24 flex items-center justify-center p-2  hover:shadow-md transition">
-          <img src="https://letsupgrade.in/assets/study-abroad/shu.png" alt="Sheffield Hallam" className="max-h-full max-w-full object-cover" />
+          <img src={shu} alt="Sheffield Hallam" className="max-h-full max-w-full object-cover" />
         </div>
         <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 w-64 h-24 flex items-center justify-center p-2 hover:shadow-md transition">
-          <img src="https://letsupgrade.in/assets/study-abroad/whiteria.png" alt="Whitireia WelTec" className="max-h-full max-w-full object-contain" />
+          <img src={Whitireia} alt="Whitireia WelTec" className="max-h-full max-w-full object-contain" />
         </div>
       </div>
 
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto px-4 mb-20">
         {[
-          { image: "https://lucdn.letsupgrade.net/assets/Artboard_9_89807f58e0.webp", university: "SHEFFIELD HALLAM UNIVERSITY", title: "MS in Big Data Analytics", features: ["6 to 8 Months India online + offline learning", "Job Opportunities in UK", "2 Years Work Visa post complete MS Degree"] },
-          { image: "https://lucdn.letsupgrade.net/assets/Artboard_7_7e42dde5f9.webp", university: "SHEFFIELD HALLAM UNIVERSITY", title: "MS in Computing", features: ["6 to 8 months India Online + Offline Learning", "Job Opportunities in UK", "2-Years Work Visa post MS Degree completion"] },
-          { image: "https://lucdn.letsupgrade.net/assets/Artboard_8_1a9d7b7708.webp", university: "SHEFFIELD HALLAM UNIVERSITY", title: "MS in IT Management", features: ["6 to 8 months India Online + Offline Learning", "Job Opportunities in UK", "2-Years Work Visa post MS Degree completion"] }
+          { image: EPU1, university: "SHEFFIELD HALLAM UNIVERSITY", title: "MS in Big Data Analytics", features: ["6 to 8 Months India online + offline learning", "Job Opportunities in UK", "2 Years Work Visa post complete MS Degree"] },
+          { image: EPU2, university: "SHEFFIELD HALLAM UNIVERSITY", title: "MS in Computing", features: ["6 to 8 months India Online + Offline Learning", "Job Opportunities in UK", "2-Years Work Visa post MS Degree completion"] },
+          { image: EPU3, university: "SHEFFIELD HALLAM UNIVERSITY", title: "MS in IT Management", features: ["6 to 8 months India Online + Offline Learning", "Job Opportunities in UK", "2-Years Work Visa post MS Degree completion"] }
         ].map((program, index) => (
           <div key={index} className="flex flex-col rounded-[2rem] overflow-hidden shadow-sm border border-gray-100 bg-gradient-to-b from-white via-white to-pink-50/50 hover:shadow-lg transition-shadow duration-300">
             <div className="relative h-48 w-full bg-gray-200">

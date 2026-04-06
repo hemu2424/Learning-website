@@ -17,6 +17,8 @@ import DashboardPage from "../pages/Dashboard/DashboardPage";
 import Certificate from "../pages/Certificate/Certificate";
 import Profile from "../pages/Profile/Profile";
 import EditProfile from "../pages/Profile/EditProfile";
+import MyPrograms from "../pages/My-Programs/MyPrograms";
+import ProgramDetail from "../pages/My-Programs/ProgramDetail";
 
 const AppRoutes = () => {
   return (
@@ -48,6 +50,9 @@ const AppRoutes = () => {
           {/* These pages will now render inside the Dashboard Layout (Center area) */}
           <Route path="/programs" element={<Explore />} />
           <Route path="/explore-programs" element={<Programs />} />
+          <Route path="/my-programs" element={<MyPrograms />} />
+          <Route path="/program/:id" element={<ProgramDetail />} />
+
           <Route path="/refer" element={<Refer />} />
           <Route path="/coins" element={<CoinPage />} />
           <Route path="/student-ambassador" element={<Studentambassador />} />
