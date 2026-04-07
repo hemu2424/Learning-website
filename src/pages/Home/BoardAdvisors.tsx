@@ -1,6 +1,6 @@
 import React from 'react'
 import { AdvisorMarquee, MarqueeText } from '../../components/ui/home/MarqueeComponents'
-import { advisors } from '../../data/homeData'
+import { advisors } from './homeData'
 
 interface BoardAdvisorsProps {
   marqueeColor?: string;

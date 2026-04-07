@@ -34,11 +34,11 @@ export const MarqueeText = ({
   gap = "",
 }: MarqueeTextProps) => {
   return (
-    <div className={`flex overflow-hidden whitespace-nowrap pointer-events-none ${className}`}>
+    <div className={`flex w-full overflow-hidden whitespace-nowrap pointer-events-none ${className}`}>
       {[0, 1].map((i) => (
         <div
           key={i}
-          className="flex"
+          className="flex flex-none"
           style={{ animation: `marquee ${speed}s linear infinite` }}
         >
           {Array(repeat)

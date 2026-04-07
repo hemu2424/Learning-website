@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { blogPosts } from '../types/blogData';
-import Sidebar from '../types/Sidebar';
+import { blogPosts } from './blogData';
+import Sidebar from '../../types/Sidebar';
 //const sidebarItems = "Blogs, About, Contact, Refer, Explore, Community, Student Ambassador, Dashboard";
 const BlogDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();

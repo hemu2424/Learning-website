@@ -1,6 +1,6 @@
 import React from 'react';
-import { blogPosts } from '../types/blogData';
-import BlogCard from '../components/sections/Blogs/BlogCard';
+import { blogPosts } from './blogData';
+import BlogCard from './BlogCard';
 // import BlogCard from './BlogCard';
 // import { blogPosts } from '../../../types/blogData';
 

@@ -1,19 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import About from "../pages/About";
-import Contact from "../pages/Contact";
-import NotFound from "../pages/NotFound";
+import About from "../pages/about-us/About";
+import Contact from "../pages/contact/Contact";
+import NotFound from "../pages/notFound/NotFound";
 import Programs from "../pages/Explore-Programs/Programs"
 import MainLayout from "../layout/MainLayout";
-import Blogs from "../pages/Blogs";
-import Refer from "../pages/Refer";
-import Explore from "../pages/Explore";
-import Community from "../pages/Community";
-import Studentambassador from "../pages/Studentambassador";
-import BlogDetail from "../pages/BlogDetail";
-import CoinPage from "../pages/CoinsPage";
+import Blogs from "../pages/blogs/Blogs";
+import Refer from "../pages/refer/Refer";
+import Community from "../pages/community/Community";
+import Studentambassador from "../pages/student-ambassador/Studentambassador";
+import BlogDetail from "../pages/blogs/BlogDetail";
+import CoinPage from "../pages/coin/CoinsPage";
 import DashboardLayout from "../layout/DashboardLayout";
-import DashboardPage from "../pages/Dashboard/DashboardPage";
 import Certificate from "../pages/Certificate/Certificate";
 import Profile from "../pages/Profile/Profile";
 import EditProfile from "../pages/Profile/EditProfile";
@@ -30,7 +28,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:slug" element={<BlogDetail />} />
-          <Route path="/about" element={<About />} />
+          
           <Route path="/contact" element={<Contact />} />
           
           {/* Note: I moved these to the Dashboard Layout below assuming 
@@ -45,10 +43,10 @@ const AppRoutes = () => {
         <Route element={<DashboardLayout />}>
           
           {/* The main dashboard page */}
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/about" element={<About />} />
+
           
           {/* These pages will now render inside the Dashboard Layout (Center area) */}
-          <Route path="/programs" element={<Explore />} />
           <Route path="/explore-programs" element={<Programs />} />
           <Route path="/my-programs" element={<MyPrograms />} />
           <Route path="/program/:id" element={<ProgramDetail />} />
@@ -63,9 +61,7 @@ const AppRoutes = () => {
 
 
           
-          {/* Add these later when you create them */}
-          {/* <Route path="/dashboard/certificates" element={<CertificatesPage />} /> */}
-          {/* <Route path="/dashboard/rewards" element={<RewardsPage />} /> */}
+       
           
         </Route>
 

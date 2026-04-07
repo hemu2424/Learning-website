@@ -33,13 +33,13 @@ import AustraliaFlag from "../../assets/home/au.png";
 
 
 
-import { communityList } from "../../types/communityData";
+import { communityList } from "../community/communityData";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { MarqueeText, ImageMarquee, AdvisorMarquee } from "../../components/ui/home/MarqueeComponents";
 
-import { programs, logos,advisors,futureTechPrograms, reviews } from "../../data/homeData";
+import { programs, logos,advisors,futureTechPrograms, reviews } from "./homeData";
 import ReferSection from "./ReferSection";
 import BoardAdvisors from "./BoardAdvisors";
 import PresenceSection from "./PresenceSection";

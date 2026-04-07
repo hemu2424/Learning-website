@@ -1,8 +1,10 @@
 import React from 'react';
-import type { Course } from '../../types/dashboardData';
+import { allCourses, type Course } from '../../types/dashboardData';
+// import SectionHeader from './SectionHeader';
+// import CourseCard from './CourseCard';
+// import { allCourses } from './dashboardData';
 
-
-const CourseCard: React.FC<Course> = ({ title, thumbnail, enrollmentCount, date, status, tag }) => {
+const Dashboard: React.FC<Course> = ({ title, thumbnail, enrollmentCount, date, status, tag }) => {
   const isLaunchingSoon = status === 'LAUNCHING SOON';
 
   return (
@@ -60,4 +62,7 @@ const CourseCard: React.FC<Course> = ({ title, thumbnail, enrollmentCount, date,
   );
 };
 
-export default CourseCard;
+// Reusable Section Header
+
+
+export default Dashboard;

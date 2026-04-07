@@ -13,14 +13,15 @@ interface ReferSectionProps {
 const ReferSection: React.FC<ReferSectionProps> = ({ marqueeColor,fromColor ,viaColor,textColor}) => {
   return (
     <div>
-        <div className="relative w-full overflow-hidden py-10 text-center">
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-full overflow-hidden py-10 text-center">
+              <div className="relative w-full flex flex-col items-center justify-center">
+              <div className="absolute inset-0 left-1/2 w-screen -translate-x-1/2 flex items-center justify-center pointer-events-none overflow-hidden">
                 {/* Dynamically pass the marqueeColor here */}
                 <MarqueeText 
                   text="Refer and Earn Rewards" 
-                  repeat={10} 
+                  repeat={20} 
                   speed={200} 
-                  className="opacity-40" 
+                  className="opacity-[0.4]" 
                   itemClassName={`text-[60px] sm:text-[100px] md:text-[140px] font-extrabold uppercase ${marqueeColor}`} 
                   gap="mr-16" 
                 />
@@ -37,6 +38,7 @@ const ReferSection: React.FC<ReferSectionProps> = ({ marqueeColor,fromColor ,via
                 {/* Fixed font family usage with standard CSS classes if possible, or inline as you had */}
                 <h2 className="relative top-2 text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 italic" style={{ fontFamily: "'Playfair Display', serif" }}>Refer & Earn</h2>
                 <p className="relative top-9 text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">Refer your friends to LetsUpgrade programs and earn T-shirts, stickers, notebooks, bags, tech gadgets, and more</p>
+              </div>
               </div>
             </div>
       

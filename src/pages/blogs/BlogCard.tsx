@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import type { BlogItem } from '../../../types/blogData';
+import type { BlogItem } from './blogData';
 
 
 const BlogCard: React.FC<BlogItem> = ({ title, date, imageUrl, link }) => {

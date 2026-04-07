@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { MarqueeText } from "./ui/home/MarqueeComponents";
+import { MarqueeText } from "../../ui/home/MarqueeComponents";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

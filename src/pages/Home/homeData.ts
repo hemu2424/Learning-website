@@ -1,9 +1,9 @@
 // --- SCHOOL OF FUTURETECH DATA ---
-import dmImg from "../assets/home/digital_marketing.webp";
-import promptImg from "../assets/home/promt_eng.webp";
-import javaImg from "../assets/home/Java_bootcamp.webp";
-import gitImg from "../assets/home/Git_Github_bootcamp.webp";
-import cppImg from "../assets/home/C++_image.webp";
+import dmImg from "../../assets/home/digital_marketing.webp";
+import promptImg from "../../assets/home/promt_eng.webp";
+import javaImg from "../../assets/home/Java_bootcamp.webp";
+import gitImg from "../../assets/home/Git_Github_bootcamp.webp";
+import cppImg from "../../assets/home/C++_image.webp";
 
 export const futureTechPrograms = [
   { bg: "https://lucdn.letsupgrade.net/assets/Untitled_design_19_d19658916f.png", title: "Cloud and DevOps", status: "LAUNCHING SOON", statusColor: "text-cyan-400" },

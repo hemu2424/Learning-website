@@ -199,7 +199,7 @@ const Sidebar = () => {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate('/edit-profile'); // Change to your actual route
+                  navigate('profile/edit'); // Change to your actual route
                   setIsProfileMenuOpen(false);
                 }}
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
