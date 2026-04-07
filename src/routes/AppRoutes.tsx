@@ -3,7 +3,7 @@ import Home from "../pages/Home/Home";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
-import Programs from "../pages/Explore-Programs/Programs"
+import Programs from "../pages/Explore-Programs/Programs/Programs"
 import MainLayout from "../layout/MainLayout";
 import Blogs from "../pages/Blogs";
 import Refer from "../pages/Refer";
@@ -17,6 +17,8 @@ import DashboardPage from "../pages/Dashboard/DashboardPage";
 import Certificate from "../pages/Certificate/Certificate";
 import Profile from "../pages/Profile/Profile";
 import EditProfile from "../pages/Profile/EditProfile";
+
+import CourseDetails from "../pages/Explore-Programs/CourseDetails/CourseDetails"
 
 const AppRoutes = () => {
   return (
@@ -55,6 +57,7 @@ const AppRoutes = () => {
           <Route path="/certificates" element={<Certificate />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile />} />
+         <Route path="/course/:category" element={<CourseDetails />} />
 
 
           
