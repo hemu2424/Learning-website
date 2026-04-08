@@ -1,4 +1,4 @@
-import { ImageMarquee, MarqueeText } from "../../components/ui/home/MarqueeComponents";
+import { ImageMarquee, MarqueeText } from "./MarqueeComponents";
 
 type ImageItem = {
   src: string;

@@ -1,6 +1,6 @@
 import { FaArrowLeft } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom'
-import aboutUsImage from '../../assets/aboutus/sai-about.png'
+import aboutUsImage from '../assets/aboutus/sai-about.png'
 
 const visionPoints = [
   'To create a space where students can acquire employable skills with fun, engagement, and a strong connection to real-world applications, ensuring high success rates.',

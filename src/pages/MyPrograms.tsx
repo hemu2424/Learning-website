@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, ChevronLeft, LayoutGrid, Zap } from 'lucide-react';
 
-import MERN from '../../assets/MyPrograms/MERN-Stack-scaled.webp';
-import AI from '../../assets/MyPrograms/ai.jpg';
+import MERN from '../assets/MyPrograms/MERN-Stack-scaled.webp';
+import AI from '../assets/MyPrograms/ai.jpg';
 
 type ProgramColor = 'blue' | 'purple' | 'teal' | 'coral';
 

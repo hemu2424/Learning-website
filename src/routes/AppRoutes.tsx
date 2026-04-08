@@ -1,22 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/Home";
-import About from "../pages/about-us/About";
-import Contact from "../pages/contact/Contact";
-import NotFound from "../pages/notFound/NotFound";
-import Programs from "../pages/Explore-Programs/Programs"
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import NotFound from "../pages/NotFound";
+import Programs from "../pages/Programs"
 import MainLayout from "../layout/MainLayout";
-import Blogs from "../pages/blogs/Blogs";
-import Refer from "../pages/refer/Refer";
-import Community from "../pages/community/Community";
-import Studentambassador from "../pages/student-ambassador/Studentambassador";
-import BlogDetail from "../pages/blogs/BlogDetail";
-import CoinPage from "../pages/coin/CoinsPage";
+import Blogs from "../pages/Blogs";
+import Refer from "../pages/Refer";
+import Community from "../pages/Community";
+import Studentambassador from "../pages/Studentambassador";
+import BlogDetail from "../components/blogs/BlogDetail";
+import CoinPage from "../pages/CoinsPage";
 import DashboardLayout from "../layout/DashboardLayout";
-import Certificate from "../pages/Certificate/Certificate";
-import Profile from "../pages/Profile/Profile";
-import EditProfile from "../pages/Profile/EditProfile";
-import MyPrograms from "../pages/My-Programs/MyPrograms";
-import ProgramDetail from "../pages/My-Programs/ProgramDetail";
+import Dashboard from "../pages/Dashboard";
+import Certificate from "../pages/Certificate";
+import Profile from "../pages/Profile";
+import EditProfile from "../components/Profile/EditProfile";
+import MyPrograms from "../pages/MyPrograms";
+import ProgramDetail from "../pages/ProgramDetail";
 
 const AppRoutes = () => {
   return (
@@ -43,6 +44,7 @@ const AppRoutes = () => {
         <Route element={<DashboardLayout />}>
           
           {/* The main dashboard page */}
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
 
           

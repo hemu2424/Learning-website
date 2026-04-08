@@ -1,5 +1,5 @@
 import React from 'react'
-import { MarqueeText } from '../../components/ui/home/MarqueeComponents'
+import { MarqueeText } from './MarqueeComponents'
 
 // Define the shape of your props
 interface ReferSectionProps {

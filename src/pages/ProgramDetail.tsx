@@ -12,7 +12,7 @@ import {
   ChevronDown,
   Menu,
 } from 'lucide-react';
-import programVideo from '../../assets/MyPrograms/79584-570048615.mp4';
+import programVideo from '../assets/MyPrograms/79584-570048615.mp4';
 
 type SessionItem = {
   id: string;

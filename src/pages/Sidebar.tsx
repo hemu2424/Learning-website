@@ -119,8 +119,8 @@ const Sidebar = () => {
             icon={<Crown size={20} />}
             label="Rewards"
             dot
-            active={isActive('/dashboard/rewards')} // <--- Dynamic!
-            onClick={() => navigate('/dashboard/rewards')} // Assuming this is a nested route
+            active={false}
+            onClick={() => navigate('/refer')}
           />
           <NavItem
             icon={<Gift size={20} />}
@@ -163,7 +163,7 @@ const Sidebar = () => {
 
           <div
             // 1. Conditionally apply styling based on the active state
-            className={`flex items-center justify-between cursor-pointer p-2 rounded-xl transition-colors ${isActive('user/profile') ? 'bg-gray-100' : 'hover:bg-gray-50'
+            className={`flex items-center justify-between cursor-pointer p-2 rounded-xl transition-colors ${isActive('/profile') ? 'bg-gray-100' : 'hover:bg-gray-50'
               }`}
             onClick={() => navigate('/profile')}
           >
@@ -199,7 +199,7 @@ const Sidebar = () => {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate('profile/edit'); // Change to your actual route
+                  navigate('/profile/edit');
                   setIsProfileMenuOpen(false);
                 }}
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"

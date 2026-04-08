@@ -1,49 +1,49 @@
 
-import card1 from "../../assets/home/hand.webp"
-import card2 from "../../assets/home/girl_laptop.webp"
-import card3 from "../../assets/home/team.png"
-import card4 from "../../assets/home/liberty.avif"
+import card1 from "../assets/home/hand.webp"
+import card2 from "../assets/home/girl_laptop.webp"
+import card3 from "../assets/home/team.png"
+import card4 from "../assets/home/liberty.avif"
 
-import discover from "../../assets/home/discover.avif"
-import count_bg from "../../assets/home/count_bg.gif"
+import discover from "../assets/home/discover.avif"
+import count_bg from "../assets/home/count_bg.gif"
 
-import shu from "../../assets/home/shu.png"
-import Whitireia from "../../assets/home/whiteria.png"
+import shu from "../assets/home/shu.png"
+import Whitireia from "../assets/home/whiteria.png"
 
-import Certifications from "../../assets/home/35_Certifications_31221d9153.webp"
-import Artboard from "../../assets/home/Artboard_4_dd6fb26409.webp"
-import London from "../../assets/home/Post_Work_Visa_Option_3_d31762be27.webp"
+import Certifications from "../assets/home/35_Certifications_31221d9153.webp"
+import Artboard from "../assets/home/Artboard_4_dd6fb26409.webp"
+import London from "../assets/home/Post_Work_Visa_Option_3_d31762be27.webp"
 
-import abroad_4_aa7d358621 from "../../assets/home/Artboard_4_dd6fb26409.webp"
-import abroad_5_b6e3f979b4 from "../../assets/home/abroad_5_b6e3f979b4.webp"
+import abroad_4_aa7d358621 from "../assets/home/Artboard_4_dd6fb26409.webp"
+import abroad_5_b6e3f979b4 from "../assets/home/abroad_5_b6e3f979b4.webp"
 
-import EPU1 from "../../assets/home/Artboard_7_7e42dde5f9.webp"
-import EPU2 from "../../assets/home/Artboard_8_1a9d7b7708.webp"
-import EPU3 from "../../assets/home/Artboard_9_89807f58e0.webp"
+import EPU1 from "../assets/home/Artboard_7_7e42dde5f9.webp"
+import EPU2 from "../assets/home/Artboard_8_1a9d7b7708.webp"
+import EPU3 from "../assets/home/Artboard_9_89807f58e0.webp"
 
-import USAFlag from "../../assets/home/us.png";
-import UKFlag from "../../assets/home/gb.png";
-import NZFlag from "../../assets/home/nz.png";
-import JapanFlag from "../../assets/home/jp.png";
-import AustraliaFlag from "../../assets/home/au.png";
-
-
+import USAFlag from "../assets/home/us.png";
+import UKFlag from "../assets/home/gb.png";
+import NZFlag from "../assets/home/nz.png";
+import JapanFlag from "../assets/home/jp.png";
+import AustraliaFlag from "../assets/home/au.png";
 
 
 
 
 
-import { communityList } from "../community/communityData";
+
+
+import { communityList } from "../types/communityData";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { MarqueeText, ImageMarquee, AdvisorMarquee } from "../../components/ui/home/MarqueeComponents";
+import { MarqueeText, ImageMarquee, AdvisorMarquee } from "../components/Home/MarqueeComponents";
 
-import { programs, logos,advisors,futureTechPrograms, reviews } from "./homeData";
-import ReferSection from "./ReferSection";
-import BoardAdvisors from "./BoardAdvisors";
-import PresenceSection from "./PresenceSection";
-import Certificate from "../Certificate/Certificate"
+import { programs, logos,advisors,futureTechPrograms, reviews } from "../types/homeData";
+import ReferSection from "../components/Home/ReferSection";
+import BoardAdvisors from "../components/Home/BoardAdvisors";
+import PresenceSection from "../components/Home/PresenceSection";
+import Certificate from "./Certificate"
 
 
 
