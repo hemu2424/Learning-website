@@ -19,6 +19,8 @@ import EditProfile from "../components/Profile/EditProfile";
 import MyPrograms from "../pages/MyPrograms";
 import ProgramDetail from "../pages/ProgramDetail";
 
+import CourseDetails from "../components/CourseDetails/CourseDetails"
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -60,6 +62,7 @@ const AppRoutes = () => {
           <Route path="/certificates" element={<Certificate />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile />} />
+         <Route path="/course/:category" element={<CourseDetails />} />
 
 
           
