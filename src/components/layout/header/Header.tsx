@@ -32,8 +32,8 @@ const Header = () => {
           {/* Right (Desktop only) */}
           <div className="hidden md:flex flex-1 justify-end items-center gap-6">
             <NavItem to="/blogs" label="Blogs" />
-            <NavItem to="/refer" label="Refer & Earn" />
-
+            <NavItem to="/refer" label="Refer & Earn" /> 
+            <NavItem to="/rewards" label="Rewards" /> 
             {/* Conditional Rendering for Desktop Auth Button */}
             {isLoggedIn ? (
               <Link
@@ -68,7 +68,8 @@ const Header = () => {
             <MobileNavItem to="/about" label="About LetsUpgrade" />
             <MobileNavItem to="/programs" label="Explore Programs" />
             <MobileNavItem to="/blogs" label="Blogs" />
-            <MobileNavItem to="/refer" label="Refer & Earn" />
+            <MobileNavItem to="/refer" label="Refer & Earn" /> 
+            <MobileNavItem to="/rewards" label="Rewards" /> 
             
             {/* Conditional Rendering for Mobile Auth Button */}
             {isLoggedIn ? (

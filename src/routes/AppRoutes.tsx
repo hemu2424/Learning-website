@@ -21,6 +21,8 @@ import ProgramDetail from "../pages/ProgramDetail";
 
 import CourseDetails from "../components/CourseDetails/CourseDetails"
 
+import Rewards from "../pages/Rewards";
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -63,6 +65,7 @@ const AppRoutes = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile />} />
          <Route path="/course/:category" element={<CourseDetails />} />
+          <Route path="/rewards" element={<Rewards />} />
 
 
           
