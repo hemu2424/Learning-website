@@ -120,7 +120,7 @@ const Sidebar = () => {
             label="Rewards"
             dot
             active={false}
-            onClick={() => navigate('/refer')}
+            onClick={() => navigate('/rewards')}
           />
           <NavItem
             icon={<Gift size={20} />}
