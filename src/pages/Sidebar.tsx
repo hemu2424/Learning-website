@@ -1,20 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  LayoutDashboard,
-  Flame,
-  Library,
-  ShieldCheck,
-  Crown,
-  Gift,
-  CircleDollarSign,
-  Flag,
-  Handshake,
-  MoreVertical,
   BadgeCheck,
+  CircleDollarSign,
+  Crown,
+  Edit,
+  Flag,
+  Flame,
+  Gift,
+  Handshake,
+  LayoutDashboard,
+  Library,
   LogOut,
-  Edit
+  MoreVertical,
+  ShieldCheck,
+  X,
 } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+interface SidebarProps {
+  mobile?: boolean;
+  onClose?: () => void;
+}
 
 interface NavItemProps {
   icon: React.ReactNode;
@@ -24,221 +30,205 @@ interface NavItemProps {
   onClick?: () => void;
 }
 
-const NavItem = ({ icon, label, active, dot, onClick }: NavItemProps) => {
-  return (
-    <div
-      onClick={onClick} /* <--- YOU ARE MISSING THIS LINE RIGHT HERE! ---> */
-      className={`flex items-center gap-3 px-4 py-2.5 rounded-2xl cursor-pointer transition-colors ${active
-          ? 'bg-gray-200 text-gray-900 font-medium'
-          : 'text-gray-700 hover:bg-gray-50'
-        }`}
-    >
-      <div className={`${active ? 'text-gray-800' : 'text-gray-600'}`}>
-        {icon}
-      </div>
-      <span className="text-sm">{label}</span>
+const NavItem = ({ icon, label, active, dot, onClick }: NavItemProps) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left transition-colors ${
+      active ? 'bg-gray-200 font-medium text-gray-900' : 'text-gray-700 hover:bg-gray-50'
+    }`}
+  >
+    <div className={active ? 'text-gray-800' : 'text-gray-600'}>{icon}</div>
+    <span className="text-sm">{label}</span>
+    {dot && <span className="ml-1 flex h-1.5 w-1.5 rounded-full bg-red-500" />}
+  </button>
+);
 
-      {/* Red Notification Dot */}
-      {dot && (
-        <span className="flex w-1.5 h-1.5 rounded-full bg-red-500 ml-1"></span>
-      )}
-    </div>
-  );
-};
-
-const Sidebar = () => {
+const Sidebar = ({ mobile = false, onClose }: SidebarProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-
-  // 1. Create a reference for the menu container
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // 2. Add the click-outside listener
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // If the menu is open AND the click happened outside the menuRef container
-      if (
-        isProfileMenuOpen &&
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
-      ) {
-        setIsProfileMenuOpen(false); // Close the menu
+      if (isProfileMenuOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsProfileMenuOpen(false);
       }
     };
 
-    // Attach the event listener to the document
     document.addEventListener('mousedown', handleClickOutside);
-
-    // Cleanup function to remove the listener when the component unmounts
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isProfileMenuOpen]); // Re-run effect if isProfileMenuOpen changes
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isProfileMenuOpen]);
 
   const isActive = (path: string) => location.pathname === path;
 
-  return (
-    <div className="w-64 h-screen flex flex-col justify-between bg-white border-r border-gray-100 px-3 py-6 font-sans">
-      <div className="space-y-6">
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    onClose?.();
+  };
 
-        {/* Primary Links */}
+  return (
+    <aside
+      className={`flex h-full flex-col justify-between border-r border-gray-100 bg-white px-3 py-4 font-sans shadow-sm ${
+        mobile ? 'w-[280px] sm:w-80' : 'w-64'
+      }`}
+    >
+      <div className="space-y-6">
+        {mobile && (
+          <div className="flex items-center justify-between px-2 pb-2">
+            <img
+              src="https://lucdn.letsupgrade.net/assets/wordmark_light_fb44b8b9d2.png"
+              alt="LetsUpgrade"
+              className="h-7 w-auto object-contain"
+            />
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900"
+              aria-label="Close sidebar"
+            >
+              <X size={18} />
+            </button>
+          </div>
+        )}
+
         <div className="space-y-1">
           <NavItem
             icon={<LayoutDashboard size={20} />}
             label="Dashboard"
-            active={isActive('/dashboard')} // <--- Dynamic!
-            onClick={() => navigate('/dashboard')}
+            active={isActive('/dashboard')}
+            onClick={() => handleNavigate('/dashboard')}
           />
           <NavItem
             icon={<Flame size={20} />}
             label="Explore Programs"
-             active={isActive('/explore-programs')} // <--- Dynamic!
-            onClick={() => navigate('/explore-programs')}
-            
+            active={isActive('/explore-programs')}
+            onClick={() => handleNavigate('/explore-programs')}
           />
           <NavItem
             icon={<Library size={20} />}
             label="My Programs"
-           
-             active={isActive('/my-programs')} // <--- Dynamic!
-             onClick={() => navigate('/my-programs')}
+            active={isActive('/my-programs')}
+            onClick={() => handleNavigate('/my-programs')}
           />
         </div>
 
-        {/* Secondary Links */}
         <div className="space-y-1">
           <NavItem
             icon={<ShieldCheck size={20} />}
             label="Certificates"
-            active={isActive('/certificates')} // <--- Dynamic!
-            onClick={() => navigate('/certificates')} // Assuming this is a nested route
+            active={isActive('/certificates')}
+            onClick={() => handleNavigate('/certificates')}
           />
           <NavItem
             icon={<Crown size={20} />}
             label="Rewards"
             dot
-            active={false}
-            onClick={() => navigate('/rewards')}
+            active={isActive('/rewards')}
+            onClick={() => handleNavigate('/rewards')}
           />
           <NavItem
             icon={<Gift size={20} />}
             label="Refer & Earn"
-            active={isActive('/refer')} // <--- Dynamic!
-            onClick={() => navigate('/refer')}
+            active={isActive('/refer')}
+            onClick={() => handleNavigate('/refer')}
           />
-          {/* Custom colored icon for LU Coins */}
           <NavItem
-            icon={<CircleDollarSign size={20} className="text-yellow-500 fill-yellow-100" />}
+            icon={<CircleDollarSign size={20} className="fill-yellow-100 text-yellow-500" />}
             label="205 LU Coins"
-            active={isActive('/coins')} // <--- Dynamic!
-            onClick={() => navigate('/coins')}
+            active={isActive('/coins')}
+            onClick={() => handleNavigate('/coins')}
           />
         </div>
 
-        {/* Tertiary Links */}
         <div className="space-y-1">
           <NavItem
             icon={<Flag size={20} />}
             label="Student Ambassador"
-            active={isActive('/student-ambassador')} // <--- Dynamic!
-            onClick={() => navigate('/student-ambassador')}
+            active={isActive('/student-ambassador')}
+            onClick={() => handleNavigate('/student-ambassador')}
           />
           <NavItem
             icon={<Handshake size={20} />}
             label="Community"
-            active={isActive('/community')} // <--- Dynamic!
-            onClick={() => navigate('/community')}
+            active={isActive('/community')}
+            onClick={() => handleNavigate('/community')}
           />
         </div>
-
       </div>
 
-      {/* Bottom Profile & Footer Section */}
       <div className="mt-auto pt-6">
-
-        {/* User Profile Card Wrapper (Added relative for dropdown positioning) */}
         <div className="relative mb-4" ref={menuRef}>
-
-          <div
-            // 1. Conditionally apply styling based on the active state
-            className={`flex items-center justify-between cursor-pointer p-2 rounded-xl transition-colors ${isActive('/profile') ? 'bg-gray-100' : 'hover:bg-gray-50'
-              }`}
-            onClick={() => navigate('/profile')}
+          <button
+            type="button"
+            className={`flex w-full items-center justify-between rounded-xl p-2 text-left transition-colors ${
+              isActive('/profile') ? 'bg-gray-100' : 'hover:bg-gray-50'
+            }`}
+            onClick={() => handleNavigate('/profile')}
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-yellow-400 flex-shrink-0"></div>
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="h-10 w-10 flex-shrink-0 rounded-full border-2 border-yellow-400 bg-gradient-to-br from-purple-400 to-purple-600" />
 
-              <div className="flex flex-col">
+              <div className="flex min-w-0 flex-col">
                 <div className="flex items-center gap-1">
-                  <span className="text-sm font-semibold text-gray-900">Himanshu</span>
-                  <BadgeCheck size={16} className="text-white fill-green-500" />
+                  <span className="truncate text-sm font-semibold text-gray-900">Himanshu</span>
+                  <BadgeCheck size={16} className="fill-green-500 text-white" />
                 </div>
-                <span className="text-xs text-gray-500">@hporiya07898</span>
+                <span className="truncate text-xs text-gray-500">@hporiya07898</span>
               </div>
             </div>
 
-            {/* The More Options Button */}
-            <button
-
-              onClick={(e) => {
-                e.stopPropagation(); // Stops the click from triggering the parent's navigate('/profile')
-                setIsProfileMenuOpen(!isProfileMenuOpen);
+            <span
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsProfileMenuOpen((value) => !value);
               }}
-              className="p-1.5 hover:bg-gray-200 rounded-md transition-colors"
+              className="rounded-md p-1.5 transition-colors hover:bg-gray-200"
             >
               <MoreVertical size={20} className="text-gray-500" />
-            </button>
-          </div>
+            </span>
+          </button>
 
-          {/* The Dropdown Menu */}
           {isProfileMenuOpen && (
-            <div className="absolute bottom-full right-0 mb-2 w-48 bg-white border border-gray-100 rounded-xl shadow-lg py-1 z-50 animate-in fade-in slide-in-from-bottom-2 duration-200">
-
+            <div className="absolute bottom-full right-0 z-50 mb-2 w-48 rounded-xl border border-gray-100 bg-white py-1 shadow-lg">
               <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate('/profile/edit');
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  handleNavigate('/profile/edit');
                   setIsProfileMenuOpen(false);
                 }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-50"
               >
                 <Edit size={18} />
                 <span className="font-medium">Edit Profile</span>
               </button>
 
-              <div className="h-px bg-gray-100 my-1"></div>
+              <div className="my-1 h-px bg-gray-100" />
 
               <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  // Add logout logic here
-                  console.log("User logged out");
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
                   setIsProfileMenuOpen(false);
                 }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-50"
               >
                 <LogOut size={18} />
                 <span className="font-medium">Logout</span>
               </button>
-
             </div>
           )}
         </div>
 
-        {/* Footer Text */}
-        <div className="text-[11px] text-gray-400 px-2 space-y-1 font-medium">
+        <div className="space-y-1 px-2 text-[11px] font-medium text-gray-400">
           <p>2026 © LetsUpgrade EdTech Pvt. Ltd.</p>
           <p>v3.3.0</p>
         </div>
-
       </div>
-    </div>
+    </aside>
   );
 };
-
-// Reusable Navigation Item Component
-
 
 export default Sidebar;

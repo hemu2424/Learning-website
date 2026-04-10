@@ -1,41 +1,49 @@
 import React from 'react';
+import { Menu } from 'lucide-react';
 
-const DashboardHeader = () => {
+interface DashboardHeaderProps {
+  onMenuClick?: () => void;
+}
+
+const DashboardHeader = ({ onMenuClick }: DashboardHeaderProps) => {
   return (
-    <header className="w-full flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200 font-sans">
-      
-      {/* Left: Logo */}
-      <div className="flex items-center">
-        <img 
-          src="https://lucdn.letsupgrade.net/assets/wordmark_light_fb44b8b9d2.png" 
-          alt="LetsUpgrade Logo" 
-          className="h-7 object-contain"
+    <header className="sticky top-0 z-30 flex w-full items-center justify-between border-b border-gray-200 bg-white px-4 py-3 font-sans sm:px-5 lg:px-6">
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onMenuClick}
+          className="rounded-xl p-2 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900 xl:hidden"
+          aria-label="Open menu"
+        >
+          <Menu size={20} />
+        </button>
+
+        <img
+          src="https://lucdn.letsupgrade.net/assets/wordmark_light_fb44b8b9d2.png"
+          alt="LetsUpgrade Logo"
+          className="h-6 object-contain sm:h-7"
         />
       </div>
 
-      {/* Right: Stats and Actions */}
-      <div className="flex items-center gap-5">
-        
-        {/* Streak / Fire Indicator */}
-        <div className="flex items-center gap-1.5">
-          <span className="text-lg leading-none" role="img" aria-label="streak">🔥</span>
-          <span className="text-orange-500 font-bold text-sm">3</span>
+      <div className="flex items-center gap-2 sm:gap-4 lg:gap-5">
+        <div className="hidden items-center gap-1.5 sm:flex">
+          <span className="text-lg leading-none" role="img" aria-label="streak">
+            🔥
+          </span>
+          <span className="text-sm font-bold text-orange-500">3</span>
         </div>
 
-        {/* LU Coins Indicator */}
         <div className="flex items-center gap-1.5">
-          {/* Custom CSS shape to mimic the LU Coin icon */}
-          <div className="flex items-center justify-center w-4 h-4 bg-yellow-400 rounded-full shadow-sm">
-             <div className="w-1.5 h-1.5 bg-orange-600 rotate-45"></div>
+          <div className="flex h-4 w-4 items-center justify-center rounded-full bg-yellow-400 shadow-sm">
+            <div className="h-1.5 w-1.5 rotate-45 bg-orange-600" />
           </div>
-          <span className="font-bold text-sm text-gray-900">205</span>
+          <span className="text-sm font-bold text-gray-900">205</span>
         </div>
 
-        {/* Call to Action Button */}
-        <button className="bg-[#949494] hover:bg-[#808080] text-white text-sm font-medium px-5 py-1.5 rounded-full transition-colors">
-          Create AI Course
+        <button className="rounded-full bg-[#949494] px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-[#808080] sm:px-4 sm:text-sm lg:px-5">
+          <span className="hidden sm:inline">Create AI Course</span>
+          <span className="sm:hidden">AI Course</span>
         </button>
-        
       </div>
     </header>
   );

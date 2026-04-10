@@ -41,9 +41,6 @@ import { MarqueeText, ImageMarquee, AdvisorMarquee } from "../components/Home/Ma
 
 import { programs, logos,advisors,futureTechPrograms, reviews } from "../types/homeData";
 import ReferSection from "../components/Home/ReferSection";
-import BoardAdvisors from "../components/Home/BoardAdvisors";
-import PresenceSection from "../components/Home/PresenceSection";
-import Certificate from "./Certificate"
 
 
 
@@ -88,7 +85,7 @@ const Home = () => {
     <div>
       <div className="relative min-h-screen w-full flex flex-col items-center overflow-x-hidden overflow-y-auto no-scrollbar">
 
-        {/* 🔥 Background Marquee */}
+        {/* ðŸ”¥ Background Marquee */}
         <div className="absolute inset-0 flex mt-[65px]">
           <MarqueeText
             text="SHARE GROW LEARN BUILD"
@@ -100,7 +97,7 @@ const Home = () => {
           />
         </div>
 
-        {/* 🔥 Main Content - HERO SECTION MATCHING SCREENSHOT */}
+        {/* ðŸ”¥ Main Content - HERO SECTION MATCHING SCREENSHOT */}
         <div className="relative z-10 w-full max-w-6xl mx-auto text-center mt-12 px-4 sm:mt-20">
           
           {/* Main Headline */}
@@ -117,20 +114,20 @@ const Home = () => {
           {/* Styled CTA Header Icons */}
           <div className="mt-6 flex items-center justify-center gap-3 sm:gap-4 text-[10px] sm:text-xs font-bold text-gray-700 tracking-wider">
             <span className="flex items-center gap-1.5">
-              <span className="text-red-500 font-black text-sm">((•))</span> LIVE CLASSES
+              <span className="text-red-500 font-black text-sm">(({"\u2022"}))</span> LIVE CLASSES
             </span>
             <span className="text-gray-300">|</span>
             <span className="flex items-center gap-1.5">
-              <span className="bg-blue-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold">✓</span> 
+              <span className="bg-blue-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] font-bold">{"\u2713"}</span> 
               GET CERTIFIED
             </span>
           </div>
 
           {/* EXACT CARDS GRID */}
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
+          <div className="mt-10 grid grid-cols-1 gap-5 text-left md:grid-cols-3">
             
             {/* CARD 1: Free Certificate Program */}
-            <div className="relative rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 bg-black h-[380px] md:h-[480px] flex flex-col border border-gray-800 shadow-xl">
+            <div className="relative flex min-h-[340px] flex-col overflow-hidden rounded-2xl border border-gray-800 bg-black shadow-xl transition-transform duration-300 hover:scale-[1.02] sm:min-h-[380px] md:min-h-[480px]">
               <div className="p-6 sm:p-8 flex flex-col items-start z-10 relative">
                 <h3 className="font-bold text-2xl sm:text-3xl text-white leading-tight mb-5 tracking-tight">
                   Explore Free Certificate<br/>Program
@@ -148,7 +145,7 @@ const Home = () => {
             </div>
 
             {/* CARD 2: Working Professional Courses */}
-            <div className="relative rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 bg-black h-[380px] md:h-[480px] flex flex-col items-center border border-gray-800 shadow-xl">
+            <div className="relative flex min-h-[340px] flex-col items-center overflow-hidden rounded-2xl border border-gray-800 bg-black shadow-xl transition-transform duration-300 hover:scale-[1.02] sm:min-h-[380px] md:min-h-[480px]">
               <div className="p-6 sm:p-8 flex flex-col items-center z-10 relative w-full text-center">
                 <h3 className="font-bold text-2xl sm:text-3xl text-white leading-tight mb-5 tracking-tight">
                   Working Professional<br/>Courses
@@ -162,7 +159,7 @@ const Home = () => {
             </div>
 
             {/* RIGHT STACK */}
-            <div className="flex flex-col gap-5 h-[380px] md:h-[480px]">
+            <div className="flex flex-col gap-5 md:min-h-[480px]">
               
               {/* Stack Top: BTech CSE */}
               <div className="relative rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 bg-black flex-1 border border-gray-800 shadow-xl">
@@ -241,7 +238,7 @@ const Home = () => {
                       <img src={item.image} alt={item.title} className="h-full w-full object-contain" />
                     </div>
                     <div className="px-3 pt-3">
-                      <p className="text-[9px] text-gray-500 font-medium tracking-wide uppercase">{item.enrolled} Enrolled · {item.date}</p>
+                      <p className="text-[9px] text-gray-500 font-medium tracking-wide uppercase">{item.enrolled} Enrolled {"\u00B7"} {item.date}</p>
                     </div>
                     <div className="px-3 pt-1 pb-3 flex-1">
                       <h4 className="text-[13px] font-bold text-gray-900 leading-snug">{item.title}</h4>
@@ -252,17 +249,17 @@ const Home = () => {
                       </button>
                     </div>
                     <div className="px-3 pb-4 flex justify-center items-center gap-2">
-                      <span className="text-[10px] text-gray-400 line-through">₹999</span>
-                      <span className="text-[10px] font-black text-black">₹0</span>
+                      <span className="text-[10px] text-gray-400 line-through">{"\u20B9"}999</span>
+                      <span className="text-[10px] font-black text-black">{"\u20B9"}0</span>
                     </div>
                   </div>
                 ))}
               </div>
-              <div>
+              <div className="mt-8 flex justify-center px-4">
 
               <button 
                 onClick={() => navigate('/programs')}
-                className="ml-[460px] mt-8 text-xs font-semibold text-gray-400 cursor-pointer text-center hover:text-white transition-colors"
+                className="text-center text-xs font-semibold text-gray-400 transition-colors hover:text-white"
               >
                 view all certificate programs &gt;
               </button>
@@ -273,19 +270,48 @@ const Home = () => {
         </div>
 
 
-      <PresenceSection
-  headingText="our presence spans"
-  marqueeText="LEARN BUILD SHARE GROW"
-  subHeading="Students from top colleges upskill with LetsUpgrade"
-  description="Students enroll in universities for degrees, but they turn to LetsUpgrade for skills"
+      <div className="w-full flex flex-col items-center">
+        <div className="mt-4 w-full flex flex-col items-center justify-center">
+          <div className="relative z-10 flex w-full max-w-6xl items-center justify-center gap-2 px-4">
+            <div className="h-[3px] flex-1 bg-gradient-to-l from-yellow-500/50 via-yellow-400/50 to-transparent" />
+            <div className="px-3 text-center text-xs font-semibold uppercase whitespace-nowrap text-amber-400 md:text-xl">
+              our presence spans
+            </div>
+            <div className="h-[3px] flex-1 bg-gradient-to-r from-yellow-500/50 via-yellow-400/50 to-transparent" />
+          </div>
 
-  marqueeColor="text-yellow-200"
-  gradientFrom="from-yellow-500/50"
-  gradientVia="via-yellow-400/50"
-  textColor="text-amber-400"
+          <div className="relative -mt-2 w-full overflow-hidden leading-none sm:-mt-4">
+            <MarqueeText
+              text="LEARN BUILD SHARE GROW"
+              repeat={20}
+              speed={300}
+              className="opacity-60"
+              itemClassName="text-4xl sm:text-6xl md:text-8xl font-black uppercase leading-none text-yellow-200"
+              gap="mr-16"
+            />
 
-  logos={logos}
-/>
+            <h2
+              className="absolute left-1/2 top-[55px] w-full max-w-[92vw] -translate-x-1/2 -translate-y-1/2 px-4 text-center text-lg font-medium italic text-neutral-900 sm:text-xl md:text-3xl"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
+              Students from top colleges upskill with LetsUpgrade
+            </h2>
+          </div>
+
+          <p className="relative z-10 mt-2 max-w-3xl px-4 text-center text-sm text-gray-700 md:text-lg">
+            Students enroll in universities for degrees, but they turn to LetsUpgrade for skills
+          </p>
+        </div>
+
+        <div className="w-full">
+          <div className="relative left-1/2 mt-6 w-screen -translate-x-1/2 overflow-hidden">
+            <div className="flex flex-col gap-6">
+              <ImageMarquee items={logos} speed={30} />
+              <ImageMarquee items={logos} speed={40} reverse />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* --------------- */}
       <div className="w-full max-w-6xl mx-auto mt-16 px-4">
@@ -472,12 +498,43 @@ const Home = () => {
         ))}
       </div>
       <ReferSection marqueeColor="text-green-200" fromColor="from-green-500" viaColor="via-green-400" textColor="text-green-600" />
-      <BoardAdvisors
-  marqueeColor="text-gray-800"
-  fromColor="from-gray-500/50"
-  viaColor="via-gray-400/50"
-  textColor="text-gray-600"
-/>
+      <div className="w-full overflow-hidden py-10 flex flex-col items-center">
+        <div className="relative w-full flex flex-col items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+            <MarqueeText
+              text="BOARD OF ADVISORS"
+              repeat={8}
+              speed={250}
+              className="opacity-[0.1]"
+              itemClassName="text-[55px] sm:text-[80px] md:text-[110px] font-extrabold uppercase text-gray-800"
+              gap="mr-8"
+            />
+          </div>
+          <div className="relative z-10 w-full px-4">
+            <div className="mx-auto flex max-w-5xl items-center justify-center gap-4">
+              <div className="h-[2px] flex-1 bg-gradient-to-l from-gray-500/50 via-gray-400/50 to-transparent" />
+              <p className="text-center text-[13px] font-bold uppercase tracking-[0.2em] text-gray-600 sm:text-[15px]">
+                BOARD OF ADVISORS
+              </p>
+              <div className="h-[2px] flex-1 bg-gradient-to-r from-gray-500/50 via-gray-400/50 to-transparent" />
+            </div>
+          </div>
+          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+            <h2
+              className="relative top-4 text-3xl font-semibold italic tracking-tight text-gray-900 sm:text-4xl md:text-5xl"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              LetsUpgrade Advisory Board
+            </h2>
+            <p className="relative top-6 mx-auto max-w-2xl text-xs leading-relaxed text-gray-500 sm:text-sm">
+              This is the part that keeps us energized day and night, as our Advisory Board members challenge us with numerous questions to answer constantly
+            </p>
+          </div>
+        </div>
+        <div className="relative left-1/2 z-10 mt-8 w-screen -translate-x-1/2">
+          <AdvisorMarquee items={advisors} speed={45} />
+        </div>
+      </div>
 
 
      
@@ -523,13 +580,21 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 italic tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>Inside Our Classrooms</h2>
           <p className=" text-sm text-gray-500 max-w-2xl mx-auto">Learn directly from industry leaders and top mentors.</p>
         </div>
-        <div className="relative w-full overflow-hidden">
-          <div className="flex whitespace-nowrap animate-marquee " style={{ animationDuration: `40s`, animationTimingFunction: "linear", animationIterationCount: "infinite" }}>
-            {[1, 2, 3, 4].map((index) => (
-              <img key={index} src="https://lucdn.letsupgrade.net/assets/Classroom_With_Leaders_c8576b0332.webp" alt="Classroom With Leaders" className="h-[100px] sm:h-[200px] md:h-[200px] w-auto object-cover flex-shrink-0 shadow-sm" />
-            ))}
-          </div>
-        </div>
+<div className="relative w-full overflow-hidden">
+  <div
+    className="flex animate-marquee"
+    style={{ animationDuration: `40s`, animationTimingFunction: "linear", animationIterationCount: "infinite" }}
+  >
+    {[1].map((index) => (
+      <img
+        key={index}
+        src="https://lucdn.letsupgrade.net/assets/Classroom_With_Leaders_c8576b0332.webp"
+        alt="Classroom With Leaders"
+        className="h-[200px] w-screen flex-shrink-0 object-cover shadow-sm"
+      />
+    ))}
+  </div>
+</div>
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-4 mt-24 mb-20">

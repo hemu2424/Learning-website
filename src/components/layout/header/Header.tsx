@@ -1,121 +1,114 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { MarqueeText } from "../../Home/MarqueeComponents";
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { MarqueeText } from '../../Home/MarqueeComponents';
+
+const navItems = [
+  { to: '/about', label: 'About LetsUpgrade' },
+  { to: '/explore-programs', label: 'Explore Programs' },
+  { to: '/blogs', label: 'Blogs' },
+  { to: '/refer', label: 'Refer & Earn' },
+  { to: '/rewards', label: 'Rewards' },
+];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
-  // TODO: Replace this mock state with your actual authentication logic 
-  // (e.g., from Redux, Zustand, or React Context)
-  const isLoggedIn = true; 
+  const isLoggedIn = true;
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur-md shadow-sm">
-        <div className="w-full flex items-center px-4 sm:px-6 lg:px-16 py-3">
-
-          {/* Left (Desktop only) */}
-          <div className="hidden md:flex flex-1 gap-6">
-            <NavItem to="/about" label="About LetsUpgrade" />
-            <NavItem to="/explore-programs" label="Explore Programs" />
+      <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/85 shadow-sm backdrop-blur-md">
+        <div className="flex w-full items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-10 xl:px-16">
+          <div className="hidden flex-1 items-center gap-2 lg:flex xl:gap-3">
+            {navItems.slice(0, 2).map((item) => (
+              <NavItem key={item.to} to={item.to} label={item.label} />
+            ))}
           </div>
 
-          {/* Center Logo */}
-          <div className="flex justify-center flex-1 md:flex-none">
-            <img 
-              src="/main_logo.png" 
-              alt="Lets Upgrade Logo" 
-              className="h-8 sm:h-10 object-contain"
-            />
+          <div className="flex flex-1 items-center justify-between gap-3 lg:flex-none">
+            <Link to="/" className="flex items-center">
+              <img src="/main_logo.png" alt="Lets Upgrade Logo" className="h-8 object-contain sm:h-10" />
+            </Link>
+
+            <button
+              type="button"
+              className="rounded-xl p-2 text-gray-700 transition hover:bg-gray-100 lg:hidden"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setIsOpen((value) => !value)}
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
 
-          {/* Right (Desktop only) */}
-          <div className="hidden md:flex flex-1 justify-end items-center gap-6">
-            <NavItem to="/blogs" label="Blogs" />
-            <NavItem to="/refer" label="Refer & Earn" /> 
-            <NavItem to="/rewards" label="Rewards" /> 
-            {/* Conditional Rendering for Desktop Auth Button */}
-            {isLoggedIn ? (
-              <Link
-                to="/dashboard"
-                className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition"
-              >
-                Dashboard
-              </Link>
-            ) : (
-              <Link
-                to="/login"
-                className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition"
-              >
-                Login
-              </Link>
-            )}
+          <div className="hidden flex-1 items-center justify-end gap-2 lg:flex xl:gap-3">
+            {navItems.slice(2).map((item) => (
+              <NavItem key={item.to} to={item.to} label={item.label} />
+            ))}
+            <Link
+              to={isLoggedIn ? '/dashboard' : '/login'}
+              className="rounded-full bg-black px-4 py-2 text-sm text-white transition hover:bg-gray-800"
+            >
+              {isLoggedIn ? 'Dashboard' : 'Login'}
+            </Link>
           </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden text-2xl ml-auto"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            ☰
-          </button>
-
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-white px-4 pb-4 space-y-2 shadow-md">
-            <MobileNavItem to="/about" label="About LetsUpgrade" />
-            <MobileNavItem to="/programs" label="Explore Programs" />
-            <MobileNavItem to="/blogs" label="Blogs" />
-            <MobileNavItem to="/refer" label="Refer & Earn" /> 
-            <MobileNavItem to="/rewards" label="Rewards" /> 
-            
-            {/* Conditional Rendering for Mobile Auth Button */}
-            {isLoggedIn ? (
-              <MobileNavItem to="/dashboard" label="Dashboard" />
-            ) : (
-              <MobileNavItem to="/login" label="Login" />
-            )}
+        <div
+          className={`overflow-hidden border-t border-gray-100 bg-white transition-[max-height,opacity] duration-300 lg:hidden ${
+            isOpen ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="space-y-1 px-4 py-4 sm:px-6">
+            {navItems.map((item) => (
+              <MobileNavItem key={item.to} to={item.to} label={item.label} onClick={() => setIsOpen(false)} />
+            ))}
+            <MobileNavItem
+              to={isLoggedIn ? '/dashboard' : '/login'}
+              label={isLoggedIn ? 'Dashboard' : 'Login'}
+              onClick={() => setIsOpen(false)}
+              emphasized
+            />
           </div>
-        )}
+        </div>
       </header>
 
-      {/* Moving Ticker */}
-      <MarqueeText 
-  text="✨ USER ENROLLED IN C++ BOOTCAMP ✨ USER ENROLLED IN SQL BOOTCAMP ✨ USER JOINED PYTHON PROGRAM"
-  repeat={5} 
-  speed={40} 
-  className="bg-black text-white py-2"
-  itemClassName="text-sm font-bold tracking-wide"
- 
-/>
+      <MarqueeText
+        text="✨ USER ENROLLED IN C++ BOOTCAMP ✨ USER ENROLLED IN SQL BOOTCAMP ✨ USER JOINED PYTHON PROGRAM"
+        repeat={5}
+        speed={40}
+        className="bg-black py-2 text-white"
+        itemClassName="text-xs font-bold tracking-wide sm:text-sm"
+      />
     </>
   );
 };
 
 export default Header;
 
-// 🔥 Desktop Nav Item
-const NavItem = ({ to, label }: { to: string; label: string }) => {
-  return (
-    <Link
-      to={to}
-      className="px-3 py-2 rounded-md hover:bg-gray-100 transition"
-    >
-      {label}
-    </Link>
-  );
-};
+const NavItem = ({ to, label }: { to: string; label: string }) => (
+  <Link to={to} className="rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100">
+    {label}
+  </Link>
+);
 
-// 📱 Mobile Nav Item
-const MobileNavItem = ({ to, label }: { to: string; label: string }) => {
-  return (
-    <Link
-      to={to}
-      className="block px-3 py-2 rounded-md hover:bg-gray-100 transition"
-    >
-      {label}
-    </Link>
-  );
-};
+const MobileNavItem = ({
+  to,
+  label,
+  onClick,
+  emphasized = false,
+}: {
+  to: string;
+  label: string;
+  onClick?: () => void;
+  emphasized?: boolean;
+}) => (
+  <Link
+    to={to}
+    onClick={onClick}
+    className={`block rounded-xl px-4 py-3 text-sm transition ${
+      emphasized ? 'bg-black text-white hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'
+    }`}
+  >
+    {label}
+  </Link>
+);
